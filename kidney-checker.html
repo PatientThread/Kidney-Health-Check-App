@@ -546,9 +546,9 @@
   .pr-sub { font-size: 9px; color: #9a9088; letter-spacing: .05em; text-transform: uppercase; margin-top: 1px; }
   .pr-meta { text-align: right; font-size: 10px; color: #6b6258; line-height: 1.6; }
   .pr-meta strong { font-size: 12px; color: #1a1612; display: block; }
-  .pr-sec { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 2px; margin: 8px 0 5px; }
-  .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; margin-bottom: 7px; }
-  .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 6px; text-align: center; }
+  .pr-sec { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 2px; margin: 6px 0 4px; }
+  .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin-bottom: 5px; }
+  .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 5px; text-align: center; }
   .pr-metric.yl { background: #fdf6e3; border-color: #b8860b; }
   .pr-metric.or { background: #fdf0e8; border-color: #cc5500; }
   .pr-metric.rd { background: #fdecea; border-color: #c0392b; }
@@ -589,7 +589,7 @@
   .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1; }
   .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 4px; }
   .pr-psq { display: block; width: 100%; height: 8px; border-radius: 1px; }
-  .pr-foot { margin-top: 8px; padding-top: 6px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 8px; color: #9a9088; line-height: 1.5; }
+  .pr-foot { margin-top: 5px; padding-top: 4px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 7.5px; color: #9a9088; line-height: 1.4; }
   .pr-disc { max-width: 480px; font-style: italic; }
   .pr-dr { text-align: right; }
   .pr-dr strong { display: block; font-size: 10px; color: #1a3d5c; }
@@ -1569,13 +1569,13 @@ function buildPrintReport() {
   }
  
   const html = `
-  <div class="pr-hdr">
+  <div class="pr-hdr" style="padding-bottom:5px;margin-bottom:6px">
     <div>
-      <div class="pr-brand">Kidney Health Report${name?' — '+name:''}</div>
+      <div class="pr-brand" style="font-size:13px">Kidney Health Report${name?' — '+name:''}</div>
       <div class="pr-sub">PatientThread · Dr C. Lawrence, Consultant Nephrologist · hertskidneycare.co.uk</div>
     </div>
-    <div class="pr-meta">
-      ${name?`<strong>${name}</strong>`:''}
+    <div class="pr-meta" style="font-size:9px;line-height:1.5">
+      ${name?`<strong style="font-size:11px">${name}</strong>`:''}
       ${age&&sexLabel?age+'-year-old '+sexLabel:''}${htCm&&wtKg?' · '+htCm.toFixed(0)+' cm · '+wtKg.toFixed(1)+' kg · BMI '+bmi.toFixed(1):''}
       <br>Result date: ${fmtD(rDate)} &nbsp;·&nbsp; Generated: ${fmtD(new Date().toISOString().split('T')[0])}
     </div>
@@ -1615,12 +1615,12 @@ function buildPrintReport() {
     </div>
   </div>
  
-  <div style="background:${(() => { const s=stageOf(curEGFR); return {'g1':'#e8f5ee','g2':'#e8f5ee','g3a':'#fdf6e3','g3b':'#fdf0e8','g4':'#fdf0e8','g5':'#fdecea'}[s.cls]; })()};border:2px solid ${(() => { const s=stageOf(curEGFR); return {'g1':'#2d7a4f','g2':'#2d7a4f','g3a':'#b8860b','g3b':'#cc5500','g4':'#cc5500','g5':'#c0392b'}[s.cls]; })()};border-radius:7px;padding:10px 14px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">
+  <div style="background:${(() => { const s=stageOf(curEGFR); return {'g1':'#e8f5ee','g2':'#e8f5ee','g3a':'#fdf6e3','g3b':'#fdf0e8','g4':'#fdf0e8','g5':'#fdecea'}[s.cls]; })()};border:2px solid ${(() => { const s=stageOf(curEGFR); return {'g1':'#2d7a4f','g2':'#2d7a4f','g3a':'#b8860b','g3b':'#cc5500','g4':'#cc5500','g5':'#c0392b'}[s.cls]; })()};border-radius:5px;padding:6px 10px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between">
     <div>
-      <div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:2px">CKD Classification</div>
-      <div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1;color:${(() => { const s=stageOf(curEGFR); return {'g1':'#1a4a30','g2':'#1a4a30','g3a':'#5a4010','g3b':'#7a2a00','g4':'#7a2a00','g5':'#7a1a10'}[s.cls]; })()}">Stage ${stageOf(curEGFR).stage}${hasACR?(curACR_mgmmol<3?' A1':curACR_mgmmol<30?' A2':' A3'):''}</div>
+      <div style="font-size:7px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:1px">CKD Classification</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:17px;line-height:1;color:${(() => { const s=stageOf(curEGFR); return {'g1':'#1a4a30','g2':'#1a4a30','g3a':'#5a4010','g3b':'#7a2a00','g4':'#7a2a00','g5':'#7a1a10'}[s.cls]; })()}">Stage ${stageOf(curEGFR).stage}${hasACR?(curACR_mgmmol<3?' A1':curACR_mgmmol<30?' A2':' A3'):''}</div>
     </div>
-    <div style="text-align:right;font-size:11px;color:#6b6258">${stageOf(curEGFR).desc}${hasACR?(curACR_mgmmol<3?' · No significant albuminuria':curACR_mgmmol<30?' · Moderately increased albuminuria':' · Severely increased albuminuria'):' · ACR not entered'}</div>
+    <div style="text-align:right;font-size:10px;color:#6b6258">${stageOf(curEGFR).desc}${hasACR?(curACR_mgmmol<3?' · No significant albuminuria':curACR_mgmmol<30?' · Moderately increased albuminuria':' · Severely increased albuminuria'):' · ACR not entered'}</div>
   </div>
   <div class="pr-two">
     <div>
