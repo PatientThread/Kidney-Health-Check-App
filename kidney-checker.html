@@ -508,7 +508,7 @@
     <strong>Your results are automatically saved on this device</strong> using your browser's local storage. They will still be here if you close and reopen this page on the same device. Use the print button to generate a one-page PDF summary to share with your GP or specialist.
   </div>
   <div style="display:flex;gap:12px;flex-wrap:wrap">
-    <button class="print-btn" onclick="setTimeout(function(){window.print();},0);return false;">🖨 Print / Save as PDF</button>
+    <button class="print-btn" onclick="printReport()">🖨 Print / Save as PDF</button>
     <button class="reset-btn" onclick="resetData()">🗑 Clear all my data</button>
   </div>
 </div>
@@ -1219,11 +1219,11 @@ function renderKDIGO(egfr, acrMgMmol) {
 // ─────────────────────────────────────────────────────
 function calcKFRE(age, sex, egfr, acrMgMmol) {
   const female = sex === 'female' ? 1 : 0;
-  // Tangri 2011 JASN 4-variable model coefficients
-  const lhr = (-0.2201 * age) + (0.2467 * female) + (-0.5567 * Math.log(egfr)) + (0.4510 * Math.log(acrMgMmol));
-  // Subtract mean linear predictor from derivation cohort (Tangri 2011 Table 1)
-  // Mean values: age=61.15yr, 44% female, mean eGFR=38.48, mean ACR=31.67 mg/mmol
-  const lhr_mean = (-0.2201 * 61.15) + (0.2467 * 0.44) + (-0.5567 * Math.log(38.48)) + (0.4510 * Math.log(31.67));
+  // Tangri 2011 JASN: age coefficient is per 10-year increment (age/10)
+  const lhr = (-0.2201 * (age/10)) + (0.2467 * female) + (-0.5567 * Math.log(egfr)) + (0.4510 * Math.log(acrMgMmol));
+  // Mean linear predictor from derivation cohort (mean age=61.15yr → 6.115 decades,
+  // 44% female, mean eGFR=38.48, mean ACR=31.67 mg/mmol)
+  const lhr_mean = (-0.2201 * 6.115) + (0.2467 * 0.44) + (-0.5567 * Math.log(38.48)) + (0.4510 * Math.log(31.67));
   const lhr_centred = lhr - lhr_mean;
   // Baseline survivals at mean covariate values (Tangri 2011)
   const S0_2 = 0.9832, S0_5 = 0.9365;
@@ -1333,8 +1333,13 @@ function showBP() {
 // ─────────────────────────────────────────────────────
 function printReport() {
   if (!curEGFR) { alert('Please calculate your eGFR first before printing.'); return; }
-  buildPrintReport();
-  setTimeout(function() { window.print(); }, 100);
+  try {
+    buildPrintReport();
+  } catch(e) {
+    alert('Could not build report: ' + e.message);
+    return;
+  }
+  setTimeout(function() { window.print(); }, 150);
 }
  
 function stageColor(egfr) {
