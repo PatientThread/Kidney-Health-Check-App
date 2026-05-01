@@ -21,7 +21,7 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh}
-
+ 
   /* DISCLAIMER */
   #disc-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,15,30,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px}
   .disc-box{background:var(--surface);border-radius:var(--radius-lg);max-width:560px;width:100%;padding:40px;box-shadow:var(--shadow-lg);animation:su .4s ease}
@@ -36,7 +36,7 @@
   .btn-p:hover{background:var(--accent-dark);transform:translateY(-1px)}
   .btn-s{background:transparent;color:var(--text-muted);border:1.5px solid var(--border);border-radius:8px;padding:12px 24px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;flex:1;text-align:center;text-decoration:none;display:flex;align-items:center;justify-content:center;transition:border-color .2s}
   .btn-s:hover{border-color:var(--accent);color:var(--accent)}
-
+ 
   /* HEADER */
   header{background:var(--surface);border-bottom:1px solid var(--border);padding:0 24px;position:sticky;top:0;z-index:100}
   .hdr{max-width:820px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
@@ -47,16 +47,16 @@
   .hdr-links{display:flex;gap:10px}
   .hdr-links a{font-size:12px;color:var(--text-muted);text-decoration:none;font-weight:500;padding:4px 10px;border-radius:6px;border:1.5px solid var(--border);transition:all .2s}
   .hdr-links a:hover{color:var(--accent);border-color:var(--accent)}
-
+ 
   main{max-width:820px;margin:0 auto;padding:32px 20px 80px}
-
+ 
   /* CARDS */
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin-bottom:24px;box-shadow:var(--shadow);animation:su .4s ease both}
   .card-hdr{display:flex;align-items:center;gap:12px;margin-bottom:24px}
   .c-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
   .c-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--accent-dark)}
   .c-sub{font-size:13px;color:var(--text-muted);margin-top:2px}
-
+ 
   /* FORM */
   .fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .fgrp{display:flex;flex-direction:column;gap:6px}
@@ -77,14 +77,14 @@
   .seg label{flex:1;text-align:center;padding:9px 12px;font-size:14px;cursor:pointer;transition:all .2s;color:var(--text-muted);font-weight:500;letter-spacing:0}
   .seg input{display:none}
   .seg input:checked+label{background:var(--accent);color:#fff}
-
+ 
   /* dual-input for stones/lbs and feet/inches */
   .dual-input{display:flex;gap:8px;align-items:stretch}
   .dual-input .iu{flex:1}
-
+ 
   .calc-btn{width:100%;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:16px;font-size:16px;font-weight:600;font-family:'DM Sans',sans-serif;cursor:pointer;margin-top:24px;transition:background .2s,transform .1s,box-shadow .2s}
   .calc-btn:hover{background:var(--accent-dark);transform:translateY(-1px);box-shadow:0 4px 20px rgba(44,95,138,.3)}
-
+ 
   /* RESULT BANNER */
   .rbanner{border-radius:var(--radius);padding:24px 28px;margin-bottom:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
   .rbanner.g1,.rbanner.g2{background:var(--green-light);border:1.5px solid var(--green)}
@@ -94,7 +94,7 @@
   .r-egfr{font-family:'DM Serif Display',serif;font-size:52px;line-height:1}
   .r-stage{font-size:18px;font-weight:600}
   .r-lbl{font-size:13px;opacity:.8;margin-top:4px}
-
+ 
   /* INFO BOXES */
   .ib{border-radius:var(--radius);padding:16px 20px;margin-bottom:14px;font-size:14px;line-height:1.7;border-left:4px solid}
   .ib.green{background:var(--green-light);border-color:var(--green);color:#1a4a30}
@@ -103,13 +103,13 @@
   .ib.red{background:var(--red-light);border-color:var(--red);color:#7a1a10}
   .ib.blue{background:var(--accent-light);border-color:var(--accent);color:#1a3a5a}
   .ib.gold{background:var(--gold-light);border-color:var(--gold);color:#5a3a00}
-
+ 
   .sec-lbl{font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-light);margin:28px 0 16px;display:flex;align-items:center;gap:10px}
   .sec-lbl::after{content:'';flex:1;height:1px;background:var(--border)}
-
+ 
   /* CHART */
   canvas{border-radius:8px;width:100%}
-
+ 
   /* READINGS */
   .r-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
   .r-item{display:flex;align-items:center;gap:12px;background:var(--surface-alt);border-radius:8px;padding:10px 14px;font-size:14px}
@@ -117,13 +117,13 @@
   .r-val{font-weight:600;color:var(--accent-dark);font-size:15px}
   .r-del{background:none;border:none;cursor:pointer;color:var(--text-light);font-size:16px;padding:2px 6px;border-radius:4px;transition:color .2s,background .2s}
   .r-del:hover{color:var(--red);background:var(--red-light)}
-
+ 
   /* ADD ROW */
   .add-row{display:flex;gap:10px;flex-wrap:wrap}
   .add-row input{flex:1;min-width:120px}
   .add-btn{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;white-space:nowrap;transition:background .2s}
   .add-btn:hover{background:var(--accent-dark)}
-
+ 
   /* BP */
   .bpi{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border-radius:8px;margin-top:12px;font-size:14px;font-weight:500}
   .bpdot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:3px}
@@ -131,18 +131,18 @@
   .bpy{background:var(--yellow-light);color:#5a4010}.bpy .bpdot{background:var(--yellow)}
   .bpo{background:var(--orange-light);color:#7a2a00}.bpo .bpdot{background:var(--orange)}
   .bpr{background:var(--red-light);color:#7a1a10}.bpr .bpdot{background:var(--red)}
-
+ 
   /* STAGE TABLE */
   .stbl{width:100%;border-collapse:collapse;font-size:13px}
   .stbl th{text-align:left;padding:8px 12px;background:var(--surface-alt);font-weight:600;color:var(--text-muted);font-size:11px;letter-spacing:.05em;text-transform:uppercase}
   .stbl td{padding:9px 12px;border-top:1px solid var(--border)}
   .stbl tr:hover td{background:var(--surface-alt)}
   .spill{display:inline-block;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
-
+ 
   /* C&G */
   .cgbox{background:var(--accent-light);border:1.5px solid var(--accent);border-radius:var(--radius);padding:18px 20px;margin-top:14px}
   .cgval{font-family:'DM Serif Display',serif;font-size:32px;color:var(--accent-dark)}
-
+ 
   /* LINK CARDS */
   .lc-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
   .lc{display:flex;align-items:center;gap:12px;background:var(--surface-alt);border-radius:10px;padding:14px 16px;text-decoration:none;border:1.5px solid var(--border);transition:all .2s}
@@ -150,11 +150,11 @@
   .lc-ico{font-size:24px}
   .lc-txt strong{display:block;font-size:13px;color:var(--text)}
   .lc-txt span{font-size:12px;color:var(--text-muted)}
-
+ 
   /* NICE */
   .nicebox{background:var(--gold-light);border:1.5px solid var(--gold);border-radius:var(--radius);padding:20px;margin-top:16px;font-size:13px;line-height:1.7;color:#5a3a00}
   .nicebox strong{color:#3a2000}
-
+ 
   /* KDIGO HEATMAP */
   .hm-wrap{overflow-x:auto;margin-top:16px}
   .hm-tbl{border-collapse:separate;border-spacing:3px;font-size:12px;min-width:460px;width:100%}
@@ -170,14 +170,14 @@
   .hm-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;font-size:12px}
   .hm-li{display:flex;align-items:center;gap:5px}
   .hm-dot{width:12px;height:12px;border-radius:3px;flex-shrink:0}
-
+ 
   /* KFRE PICTOGRAM — compact no-scroll layout */
   .kfre-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
   .kfre-pbox{background:var(--surface-alt);border-radius:12px;padding:16px 18px;border:1.5px solid var(--border)}
   .kfre-pct{font-family:'DM Serif Display',serif;font-size:36px;line-height:1;margin-bottom:2px}
-  .pict-wrap{line-height:1.1;margin-top:8px;display:grid;grid-template-columns:repeat(10,1fr);gap:2px}
-  .psq{display:block;width:100%;aspect-ratio:0.8/1;border-radius:2px 2px 4px 4px}
-
+  .pict-wrap{line-height:1;margin-top:8px;display:grid;grid-template-columns:repeat(10,1fr);gap:2px}
+  .psq{display:block;width:100%;height:14px;border-radius:2px 2px 4px 4px}
+ 
   /* RADIO */
   .rgrp{display:flex;flex-direction:column;gap:10px}
   .ropt{display:flex;align-items:flex-start;gap:12px;background:var(--surface-alt);border-radius:8px;padding:12px 16px;cursor:pointer;border:1.5px solid transparent;transition:all .2s}
@@ -185,33 +185,45 @@
   .ropt input[type=radio]{margin-top:2px;accent-color:var(--accent)}
   .ropt .ot strong{display:block;font-size:14px;font-weight:500}
   .ropt .ot span{font-size:13px;color:var(--text-muted)}
-
+ 
   .footnote{font-size:11px;color:var(--text-light);margin-top:10px;line-height:1.6;font-style:italic;border-top:1px solid var(--border);padding-top:8px}
   .hidden{display:none!important}
   @keyframes su{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes flash{0%{opacity:1}40%{opacity:.5}100%{opacity:1}}
+  .live-flash{animation:flash .4s ease;}
   .fi{animation:su .4s ease both}
-
+ 
   /* PRINT REPORT */
   .print-btn{display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--border);color:var(--text-muted);border-radius:8px;padding:10px 18px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s}
   .print-btn:hover{border-color:var(--accent);color:var(--accent)}
   .reset-btn{display:flex;align-items:center;gap:8px;background:var(--red-light);border:1.5px solid var(--red);color:var(--red);border-radius:8px;padding:10px 18px;font-size:14px;font-family:'DM Sans',sans-serif;font-weight:500;cursor:pointer;transition:all .2s}
   .reset-btn:hover{background:var(--red);color:#fff}
-
+ 
   footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--text-light);border-top:1px solid var(--border);max-width:820px;margin:0 auto;line-height:1.8}
   footer a{color:var(--accent);text-decoration:none}
-
-  /* PRINT STYLES */
+ 
+  /* PRINT STYLES — generates a clean clinical report, hiding the app UI entirely */
   @media print {
-    #disc-overlay,header,.hdr-links,.calc-btn,.add-btn,.r-del,.print-btn,.reset-btn{display:none!important}
-    #name-label-hint{display:none!important}
-    #print-name-header{display:block!important}
-    body{background:#fff;font-size:12px}
-    .card{box-shadow:none;border:1px solid #ddd;page-break-inside:avoid;margin-bottom:16px;padding:20px}
-    main{padding:0}
-    .hidden{display:block!important}
-    #c-results.hidden,#c-trend.hidden,#c-acr.hidden,#c-bp.hidden{display:none!important}
+    @page { margin: 12mm 14mm; size: A4; }
+ 
+    /* Hide everything by default */
+    header, footer, #disc-overlay, #c-inputs, #c-trend, #c-acr, #c-bp, #c-report, #c-res,
+    .calc-btn, .add-btn, .r-del, .print-btn, .reset-btn, .hdr-links { display: none !important; }
+ 
+    body { background: #fff !important; font-size: 12px; color: #1a1612; font-family: 'DM Sans', sans-serif; }
+    main { max-width: 100%; padding: 0; margin: 0; }
+ 
+    /* Show the print report block */
+    #print-report { display: block !important; }
+ 
+    /* Show results card, stripped down */
+    #c-results { display: block !important; box-shadow: none !important; border: none !important;
+      padding: 0 !important; margin: 0 !important; animation: none !important; }
+ 
+    /* Hide things inside results we don't want */
+    #c-results .card-hdr, #c-results .sec-lbl, #c-results table, #c-results .cgbox { display: none !important; }
   }
-
+ 
   @media(max-width:560px){
     .fg{grid-template-columns:1fr}
     .lc-grid{grid-template-columns:1fr}
@@ -224,7 +236,7 @@
 </style>
 </head>
 <body>
-
+ 
 <!-- DISCLAIMER -->
 <div id="disc-overlay">
   <div class="disc-box">
@@ -243,7 +255,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- HEADER -->
 <header>
   <div class="hdr">
@@ -260,9 +272,9 @@
     </div>
   </div>
 </header>
-
+ 
 <main>
-
+ 
 <!-- PRINT-ONLY NAME HEADER -->
 <div id="print-name-header" style="display:none">
   <div style="border-bottom:2px solid #1a3d5c;padding-bottom:10px;margin-bottom:20px;display:flex;align-items:flex-end;justify-content:space-between">
@@ -273,7 +285,7 @@
     <div style="text-align:right;font-size:11px;color:#6b6258" id="print-date-display"></div>
   </div>
 </div>
-
+ 
 <!-- ── CARD 1: INPUTS ── -->
 <div class="card" id="c-inputs">
   <div class="card-hdr">
@@ -296,7 +308,7 @@
         <input type="radio" name="sex" id="sF" value="female"><label for="sF">Female</label>
       </div>
     </div>
-
+ 
     <!-- HEIGHT with imperial toggle -->
     <div class="fgrp">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
@@ -315,7 +327,7 @@
         <div class="iu"><input type="number" id="htIn" placeholder="in" min="0" max="11"><span class="ul">in</span></div>
       </div>
     </div>
-
+ 
     <!-- WEIGHT with imperial toggle -->
     <div class="fgrp">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
@@ -334,7 +346,7 @@
         <div class="iu"><input type="number" id="wtLbs" placeholder="lbs" min="0" max="13"><span class="ul">lbs</span></div>
       </div>
     </div>
-
+ 
     <!-- Creatinine with toggle BELOW the field -->
     <div class="fgrp">
       <label for="creat" id="creatLbl">Serum Creatinine (μmol/L)</label>
@@ -352,7 +364,7 @@
   </div>
   <button class="calc-btn" onclick="calculate()">Calculate my eGFR →</button>
 </div>
-
+ 
 <!-- ── CARD 2: RESULTS ── -->
 <div class="card hidden fi" id="c-results">
   <div class="card-hdr">
@@ -395,7 +407,7 @@
   <div class="sec-lbl">Guidance</div>
   <div id="advice-boxes"></div>
 </div>
-
+ 
 <!-- ── CARD 3: TREND ── -->
 <div class="card hidden fi" id="c-trend">
   <div class="card-hdr">
@@ -422,7 +434,7 @@
     <div id="chart-wrap" class="hidden" style="margin-top:20px"><canvas id="tChart"></canvas></div>
   </div>
 </div>
-
+ 
 <!-- ── CARD 4: ACR ── -->
 <div class="card hidden fi" id="c-acr">
   <div class="card-hdr">
@@ -463,7 +475,7 @@
     </div>
   </div>
 </div>
-
+ 
 <!-- ── CARD 5: BP ── -->
 <div class="card hidden fi" id="c-bp">
   <div class="card-hdr">
@@ -485,7 +497,7 @@
     <div id="bp-result" style="margin-top:12px"></div>
   </div>
 </div>
-
+ 
 <!-- ── CARD 6: REPORT & DATA ── -->
 <div class="card hidden fi" id="c-report">
   <div class="card-hdr">
@@ -500,7 +512,7 @@
     <button class="reset-btn" onclick="resetData()">🗑 Clear all my data</button>
   </div>
 </div>
-
+ 
 <!-- ── CARD 7: RESOURCES ── -->
 <div class="card hidden fi" id="c-res">
   <div class="card-hdr">
@@ -520,16 +532,91 @@
     <a class="lc" href="https://kidneyfailurerisk.com" target="_blank"><div class="lc-ico">🔬</div><div class="lc-txt"><strong>KFRE Calculator</strong><span>Official Tangri Lab kidney failure risk tool</span></div></a>
   </div>
 </div>
-
+ 
+<!-- ══════════════════════════════════════════
+     PRINT REPORT — hidden on screen, shown when printing
+════════════════════════════════════════════ -->
+<div id="print-report" style="display:none">
+<style>
+  /* Print report internal styles */
+  .pr { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #1a1612; }
+  .pr-hdr { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1a3d5c; padding-bottom: 10px; margin-bottom: 14px; }
+  .pr-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: #1a3d5c; }
+  .pr-sub { font-size: 10px; color: #9a9088; letter-spacing: .05em; text-transform: uppercase; margin-top: 2px; }
+  .pr-meta { text-align: right; font-size: 11px; color: #6b6258; line-height: 1.8; }
+  .pr-meta strong { font-size: 14px; color: #1a1612; display: block; }
+  .pr-sec { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 3px; margin: 12px 0 8px; }
+  .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; margin-bottom: 10px; }
+  .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 6px; padding: 8px; text-align: center; }
+  .pr-metric.yl { background: #fdf6e3; border-color: #b8860b; }
+  .pr-metric.or { background: #fdf0e8; border-color: #cc5500; }
+  .pr-metric.rd { background: #fdecea; border-color: #c0392b; }
+  .pr-metric.gn { background: #e8f5ee; border-color: #2d7a4f; }
+  .pr-metric.bl { background: #d6e8f5; border-color: #2c5f8a; }
+  .pr-mval { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1; color: #1a3d5c; }
+  .pr-metric.yl .pr-mval { color: #b8860b; }
+  .pr-metric.or .pr-mval { color: #cc5500; }
+  .pr-metric.rd .pr-mval { color: #c0392b; }
+  .pr-metric.gn .pr-mval { color: #2d7a4f; }
+  .pr-munit { font-size: 8px; color: #9a9088; margin-top: 1px; }
+  .pr-mlbl { font-size: 9px; font-weight: 600; color: #6b6258; margin-top: 4px; }
+  .pr-msub { font-size: 8px; color: #9a9088; }
+  .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pr-tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .pr-tbl th { background: #f7f5f0; padding: 4px 8px; font-size: 9px; font-weight: 600; color: #6b6258; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+  .pr-tbl td { padding: 4px 8px; border-top: 1px solid #e2ddd4; }
+  .pr-tbl tr.cur td { background: #d6e8f5; font-weight: 600; }
+  .pr-tbl tr.proj td { color: #c8a84b; font-style: italic; }
+  .pr-badge { display: inline-block; padding: 1px 6px; border-radius: 20px; font-size: 9px; font-weight: 700; }
+  .bg1 { background: #e8f5ee; color: #2d7a4f; }
+  .bg2 { background: #e8f5ee; color: #2d7a4f; }
+  .bg3a { background: #fdf6e3; color: #b8860b; }
+  .bg3b { background: #fdf0e8; color: #cc5500; }
+  .pr-ib { border-radius: 5px; padding: 7px 10px; font-size: 11px; line-height: 1.55; border-left: 3px solid; margin-bottom: 6px; }
+  .pr-ib.gn { background: #e8f5ee; border-color: #2d7a4f; color: #1a4a30; }
+  .pr-ib.yl { background: #fdf6e3; border-color: #b8860b; color: #5a4010; }
+  .pr-ib.or { background: #fdf0e8; border-color: #cc5500; color: #7a2a00; }
+  .pr-ib.rd { background: #fdecea; border-color: #c0392b; color: #7a1a10; }
+  .pr-ib.bl { background: #d6e8f5; border-color: #2c5f8a; color: #1a3a5a; }
+  .pr-ib.gd { background: #f5edda; border-color: #c8a84b; color: #5a3a00; }
+  .pr-step { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; padding: 6px 8px; background: #f7f5f0; border-radius: 5px; border: 1px solid #e2ddd4; }
+  .pr-stepn { width: 18px; height: 18px; border-radius: 50%; background: #2c5f8a; color: #fff; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .pr-stepn.urg { background: #cc5500; }
+  .pr-stept strong { display: block; font-size: 11px; }
+  .pr-stept span { font-size: 10px; color: #6b6258; }
+  .pr-prow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pr-pbox { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 6px; padding: 8px 10px; }
+  .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1; }
+  .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 5px; }
+  .pr-psq { display: block; width: 100%; height: 10px; border-radius: 1px; }
+  .pr-foot { margin-top: 12px; padding-top: 8px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; color: #9a9088; line-height: 1.6; }
+  .pr-disc { max-width: 480px; font-style: italic; }
+  .pr-dr { text-align: right; }
+  .pr-dr strong { display: block; font-size: 11px; color: #1a3d5c; }
+ 
+  /* KDIGO mini in print */
+  .pr-kdigo { display: grid; grid-template-columns: auto repeat(3,1fr); gap: 2px; font-size: 9px; margin-top: 4px; }
+  .pr-kh { padding: 3px 4px; text-align: center; font-weight: 600; color: #6b6258; font-size: 8px; }
+  .pr-kr { padding: 3px 5px; text-align: right; font-weight: 600; color: #6b6258; white-space: nowrap; font-size: 8px; }
+  .pr-kc { padding: 4px 3px; text-align: center; border-radius: 3px; font-size: 8px; font-weight: 600; }
+  .pkc1{background:#2d7a4f;color:#fff} .pkc2{background:#7ec99a;color:#1a4a30}
+  .pkc3{background:#f4c430;color:#3a2a00} .pkc4{background:#e07020;color:#fff} .pkc5{background:#c0392b;color:#fff}
+  .pkc-active{outline:2px solid #1a1612;outline-offset:1px;}
+</style>
+<div class="pr" id="pr-content">
+  <!-- populated by JS at print time -->
+</div>
+</div>
+ 
 </main>
-
+ 
 <footer>
   <p><strong>Kidney Health Checker</strong> — developed by Dr Christopher Lawrence, Consultant Nephrologist</p>
   <p>A <a href="https://www.meetariadne.app" target="_blank">PatientThread Ltd</a> product · For educational purposes only · Not a substitute for medical advice</p>
   <p style="margin-top:8px">Emergency: <strong>999</strong> &nbsp;·&nbsp; Urgent: <strong>NHS 111</strong> &nbsp;·&nbsp; Routine: your GP</p>
   <p style="margin-top:8px;font-size:11px;color:var(--text-light)">CKD-EPI 2021 (race-free) · Cockcroft–Gault (adjusted BW) · KFRE 4-variable (Tangri et al.) · KDIGO 2024 · NICE NG203</p>
 </footer>
-
+ 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <script>
 // ─────────────────────────────────────────────────────
@@ -543,12 +630,12 @@ let curEGFR = null, curAge = null, curSex = null;
 let curACR_mgmmol = null;
 let prevReadings = [];
 let chartInst = null;
-
+ 
 // ─────────────────────────────────────────────────────
 // LOCAL STORAGE — persist & restore
 // ─────────────────────────────────────────────────────
 const LS_KEY = 'kidneyChecker_v1';
-
+ 
 function saveToStorage() {
   try {
     const data = {
@@ -575,14 +662,14 @@ function saveToStorage() {
     localStorage.setItem(LS_KEY, JSON.stringify(data));
   } catch(e) {}
 }
-
+ 
 function loadFromStorage() {
   try {
     const raw = localStorage.getItem(LS_KEY);
     if (!raw) return false;
     const data = JSON.parse(raw);
     const inp = data.inputs || {};
-
+ 
     if (inp.name) document.getElementById('patientName').value = inp.name;
     if (inp.age) document.getElementById('age').value = inp.age;
     if (inp.sex) {
@@ -591,7 +678,7 @@ function loadFromStorage() {
     if (inp.useMgDL) { document.getElementById('creatToggle').checked = true; toggleCreat(); }
     if (inp.creat) document.getElementById('creat').value = inp.creat;
     if (inp.rDate) document.getElementById('rDate').value = inp.rDate;
-
+ 
     if (inp.useImperialHeight) {
       document.getElementById('htToggle').checked = true; toggleHeight();
       if (inp.htFt) document.getElementById('htFt').value = inp.htFt;
@@ -599,7 +686,7 @@ function loadFromStorage() {
     } else {
       if (inp.height) document.getElementById('height').value = inp.height;
     }
-
+ 
     if (inp.useImperialWeight) {
       document.getElementById('wtToggle').checked = true; toggleWeight();
       if (inp.wtSt) document.getElementById('wtSt').value = inp.wtSt;
@@ -607,13 +694,13 @@ function loadFromStorage() {
     } else {
       if (inp.weight) document.getElementById('weight').value = inp.weight;
     }
-
+ 
     prevReadings = data.prevReadings || [];
     curEGFR = data.curEGFR;
     curAge = data.curAge;
     curSex = data.curSex;
     curACR_mgmmol = data.curACR_mgmmol;
-
+ 
     if (curEGFR) {
       // Re-run calculate to restore results
       calculate(true);
@@ -621,13 +708,13 @@ function loadFromStorage() {
     return true;
   } catch(e) { return false; }
 }
-
+ 
 function resetData() {
   if (!confirm('Clear all saved data and start over?')) return;
   localStorage.removeItem(LS_KEY);
   location.reload();
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // HEIGHT TOGGLE — cm ↔ ft & in
 // ─────────────────────────────────────────────────────
@@ -648,8 +735,9 @@ function toggleHeight() {
     lbl.textContent = 'cm';
     tog.textContent = 'ft & in';
   }
+  liveRecalc();
 }
-
+ 
 function getHeightCm() {
   if (useImperialHeight) {
     const ft = parseFloat(document.getElementById('htFt').value) || 0;
@@ -658,7 +746,7 @@ function getHeightCm() {
   }
   return parseFloat(document.getElementById('height').value);
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // WEIGHT TOGGLE — kg ↔ stones & lbs
 // ─────────────────────────────────────────────────────
@@ -679,8 +767,9 @@ function toggleWeight() {
     lbl.textContent = 'kg';
     tog.textContent = 'st & lbs';
   }
+  liveRecalc();
 }
-
+ 
 function getWeightKg() {
   if (useImperialWeight) {
     const st = parseFloat(document.getElementById('wtSt').value) || 0;
@@ -689,7 +778,7 @@ function getWeightKg() {
   }
   return parseFloat(document.getElementById('weight').value);
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // CREATININE UNIT TOGGLE
 // ─────────────────────────────────────────────────────
@@ -710,8 +799,9 @@ function toggleCreat() {
     document.getElementById('creat').placeholder = 'e.g. 110';
     document.getElementById('prev-creat').placeholder = 'Creatinine';
   }
+  liveRecalc();
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // ACR UNIT TOGGLE  mg/mmol (UK) ↔ mg/g (US)
 // ─────────────────────────────────────────────────────
@@ -729,7 +819,7 @@ function toggleACR() {
   const v = parseFloat(document.getElementById('acr-in').value);
   if (v) showACR();
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // CKD-EPI 2021 (race-free)
 // ─────────────────────────────────────────────────────
@@ -742,7 +832,7 @@ function calcEGFR(age, sex, scrMgDL) {
   if (female) e *= 1.012;
   return Math.round(e * 10) / 10;
 }
-
+ 
 function stageOf(egfr) {
   if (egfr >= 90) return {stage:'G1', desc:'Normal or high kidney function', cls:'g1', idx:0};
   if (egfr >= 60) return {stage:'G2', desc:'Mildly decreased kidney function', cls:'g2', idx:1};
@@ -751,13 +841,13 @@ function stageOf(egfr) {
   if (egfr >= 15) return {stage:'G4', desc:'Severely decreased kidney function', cls:'g4', idx:4};
   return {stage:'G5', desc:'Kidney failure range', cls:'g5', idx:5};
 }
-
+ 
 function acrCatOf(mgmmol) {
   if (mgmmol < 3) return 0;
   if (mgmmol < 30) return 1;
   return 2;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // BMI & COCKCROFT-GAULT
 // ─────────────────────────────────────────────────────
@@ -769,7 +859,7 @@ function calcCG(age, sex, scrMgDL, wt, ht) {
   if (sex === 'female') cg *= 0.85;
   return { cg: Math.round(cg*10)/10, ibw: ibw.toFixed(1), bwU: bwU.toFixed(1) };
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // CALCULATE
 // ─────────────────────────────────────────────────────
@@ -779,20 +869,25 @@ function calculate(silent) {
   const ht  = getHeightCm();
   const wt  = getWeightKg();
   const creatRaw = parseFloat(document.getElementById('creat').value);
-
+ 
   if (!silent && (!age || !ht || !wt || !creatRaw)) { alert('Please fill in all fields.'); return; }
   if (!age || !ht || !wt || !creatRaw) return;
-
+ 
   const scrMgDL = useMgDL ? creatRaw : creatRaw / 88.42;
   curAge = age; curSex = sex;
   curEGFR = calcEGFR(age, sex, scrMgDL);
-
+ 
   const si = stageOf(curEGFR);
+  const banner = document.getElementById('egfr-banner');
   document.getElementById('egfr-val').textContent = curEGFR;
-  document.getElementById('egfr-banner').className = 'rbanner ' + si.cls;
+  banner.className = 'rbanner ' + si.cls;
+  // Brief flash to confirm live update
+  banner.classList.remove('live-flash');
+  void banner.offsetWidth; // force reflow
+  banner.classList.add('live-flash');
   document.getElementById('ckd-stage').textContent = 'CKD Stage ' + si.stage;
   document.getElementById('ckd-desc').textContent = si.desc;
-
+ 
   const bmi = wt / ((ht/100)**2);
   const bmiOut = bmi < 20 || bmi > 25;
   document.getElementById('bmi-val').textContent = bmi.toFixed(1);
@@ -802,7 +897,7 @@ function calculate(silent) {
   else if (bmi <= 25) { bf.textContent = '✓ Healthy BMI (20–25)';    bf.style.color = 'var(--green)'; }
   else if (bmi <= 30) { bf.textContent = '⚠ Overweight (25–30)';     bf.style.color = 'var(--yellow)'; }
   else                { bf.textContent = '⚠ Obese (> 30)';            bf.style.color = 'var(--orange)'; }
-
+ 
   const cgSec = document.getElementById('cg-section');
   if (bmiOut) {
     cgSec.classList.remove('hidden');
@@ -813,24 +908,24 @@ function calculate(silent) {
       (bmi < 20 ? 'Low muscle mass in lean patients can make creatinine-based estimates unreliable.'
                 : 'In obesity, adjusted BW avoids overestimating creatinine clearance.');
   } else { cgSec.classList.add('hidden'); }
-
+ 
   renderAdvice(curEGFR);
-
+ 
   ['c-results','c-trend','c-acr','c-bp','c-report','c-res'].forEach(id =>
     document.getElementById(id).classList.remove('hidden'));
-
+ 
   if (!silent) {
     saveToStorage();
     setTimeout(() => document.getElementById('c-results').scrollIntoView({behavior:'smooth',block:'start'}), 100);
   }
-
+ 
   // Restore chart if prevReadings exist
   if (prevReadings.length > 0) {
     renderList();
     renderChart();
   }
 }
-
+ 
 function renderAdvice(egfr) {
   const b = document.getElementById('advice-boxes');
   if (egfr >= 90) b.innerHTML = `<div class="ib green"><strong>eGFR ≥ 90 (G1):</strong> Your eGFR is in the normal range. However, eGFR alone doesn't tell the whole story — kidney disease can exist with a normal eGFR if there is protein in the urine. Please work through the steps below.</div>`;
@@ -840,7 +935,7 @@ function renderAdvice(egfr) {
   else if (egfr >= 15) b.innerHTML = `<div class="ib orange"><strong>eGFR 15–29 (G4):</strong> Severely reduced. Contact your GP <strong>as soon as possible</strong>. This warrants urgent review and likely nephrology referral. <strong>If unwell: call NHS 111 or go to A&amp;E.</strong></div>`;
   else b.innerHTML = `<div class="ib red"><strong>eGFR &lt; 15 (G5):</strong> Kidney failure range. <strong>Please seek medical attention urgently.</strong> Contact your GP today, call NHS 111, or attend A&amp;E if you feel unwell. Do not wait.</div>`;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // FIRST / PREVIOUS READINGS
 // ─────────────────────────────────────────────────────
@@ -856,7 +951,7 @@ function handleFR(r) {
   }
   saveToStorage();
 }
-
+ 
 function renderRetest(egfr) {
   const b = document.getElementById('retest-box');
   if (!egfr) { b.innerHTML=''; return; }
@@ -866,7 +961,7 @@ function renderRetest(egfr) {
   else { t = 'as soon as possible — contact your GP urgently'; c = 'orange'; }
   b.innerHTML = `<div class="ib ${c}" style="margin-top:12px"><strong>Recommended:</strong> Repeat blood tests within <strong>${t}</strong>.<br><br>A single eGFR can be misleading — illness, dehydration, strenuous exercise or certain medications can all temporarily lower the result. A confirmatory test is needed before any diagnosis is made.<br><br><em>⚠ If you feel unwell at any point, don't wait — contact your GP or call NHS 111.</em></div>`;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // READINGS (creatinine-based)
 // ─────────────────────────────────────────────────────
@@ -921,14 +1016,14 @@ function renderList() {
         : `<button class="r-del" onclick="removeReading('${r.date}')">✕</button>`}
     </div>`).join('');
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // CHART — time-proportionate x-axis using real dates
 // ─────────────────────────────────────────────────────
 function dateToMs(dateStr) {
   return new Date(dateStr).getTime();
 }
-
+ 
 function renderChart() {
   const wrap = document.getElementById('chart-wrap');
   let all = [...prevReadings];
@@ -943,10 +1038,10 @@ function renderChart() {
   }
   if (all.length < 2) { wrap.classList.add('hidden'); return; }
   wrap.classList.remove('hidden');
-
+ 
   // Use real timestamps for proportionate spacing
   const dataPoints = all.map(r => ({ x: dateToMs(r.date), y: r.egfr }));
-
+ 
   // Linear regression on real timestamps
   const n = dataPoints.length;
   const meanX = dataPoints.reduce((s,p)=>s+p.x,0)/n;
@@ -954,7 +1049,7 @@ function renderChart() {
   const slope = dataPoints.reduce((s,p)=>s+(p.x-meanX)*(p.y-meanY),0) /
                 dataPoints.reduce((s,p)=>s+(p.x-meanX)**2,0);
   const intercept = meanY - slope * meanX;
-
+ 
   // Project 2 years ahead if we have ≥3 readings
   const projPoints = [];
   if (n >= 3) {
@@ -964,12 +1059,12 @@ function renderChart() {
     projPoints.push({ x: lastMs + oneYear, y: Math.max(0, Math.round((intercept + slope*(lastMs+oneYear))*10)/10) });
     projPoints.push({ x: lastMs + 2*oneYear, y: Math.max(0, Math.round((intercept + slope*(lastMs+2*oneYear))*10)/10) });
   }
-
+ 
   const ctx = document.getElementById('tChart').getContext('2d');
   if (chartInst) chartInst.destroy();
-
+ 
   const showProj = projPoints.length > 0;
-
+ 
   chartInst = new Chart(ctx, {
     type:'line',
     data:{
@@ -1045,7 +1140,7 @@ function renderChart() {
     }}]
   });
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // ACR HANDLER
 // ─────────────────────────────────────────────────────
@@ -1056,28 +1151,28 @@ function handleACR(r) {
   if (r.value === 'no') document.getElementById('acr-no').classList.remove('hidden');
   else document.getElementById('acr-yes').classList.remove('hidden');
 }
-
+ 
 function showACR() {
   const rawVal = parseFloat(document.getElementById('acr-in').value);
   const box = document.getElementById('acr-result');
   if (!rawVal || rawVal < 0) { box.innerHTML=''; return; }
-
+ 
   const mgmmol = useACRmgg ? rawVal / 8.84 : rawVal;
   curACR_mgmmol = mgmmol;
   saveToStorage();
-
+ 
   const dispVal = useACRmgg ? rawVal.toFixed(1) + ' mg/g' : rawVal.toFixed(1) + ' mg/mmol';
   let cat, desc, cls;
   if (mgmmol < 3)  { cat='A1 — Normal to mildly increased'; desc='No significant albuminuria.'; cls='green'; }
   else if (mgmmol < 30) { cat='A2 — Moderately increased'; desc='Microalbuminuria detected. This is an important marker of kidney and cardiovascular risk, even with a normal eGFR. Discuss with your GP.'; cls='yellow'; }
   else { cat='A3 — Severely increased'; desc='Significant proteinuria. This substantially increases CKD progression and cardiovascular risk, and warrants GP review and very likely nephrology referral.'; cls='orange'; }
-
+ 
   box.innerHTML = `<div class="ib ${cls}"><strong>ACR ${dispVal} — ${cat}</strong><br>${desc}</div>`;
-
+ 
   renderKDIGO(curEGFR, mgmmol);
   renderKFRE(curAge, curSex, curEGFR, mgmmol);
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // KDIGO HEATMAP
 // ─────────────────────────────────────────────────────
@@ -1091,22 +1186,22 @@ const KM = [
 ];
 const KL = ['Low','Mod. increased','High','Very high','Discuss with GP/specialist'];
 const KC = ['hm1','hm2','hm3','hm4','hm5'];
-
+ 
 function renderKDIGO(egfr, acrMgMmol) {
   const wrap = document.getElementById('kdigo-wrap');
   wrap.classList.remove('hidden');
-
+ 
   const eIdx = stageOf(egfr).idx;
   const aIdx = acrCatOf(acrMgMmol);
-
+ 
   const eLabels = ['G1 ≥90','G2 60–89','G3a 45–59','G3b 30–44','G4 15–29','G5 &lt;15'];
   const aLabels = ['A1 &lt;3 mg/mmol','A2 3–30 mg/mmol','A3 ≥30 mg/mmol'];
-
+ 
   let t = `<table class="hm-tbl"><thead><tr>
     <th style="text-align:right;padding-right:10px;color:var(--text-muted);font-size:11px">eGFR stage ↓ &nbsp;|&nbsp; ACR category →</th>
     ${aLabels.map((l,ci) => `<th style="${ci===aIdx?'color:var(--accent-dark);font-weight:700;':''}">${l}</th>`).join('')}
   </tr></thead><tbody>`;
-
+ 
   KM.forEach((row, ri) => {
     t += `<tr><td class="hm-row-lbl" style="${ri===eIdx?'color:var(--accent-dark);font-weight:700':''}"><strong>${eLabels[ri]}</strong></td>`;
     row.forEach((risk, ci) => {
@@ -1118,7 +1213,7 @@ function renderKDIGO(egfr, acrMgMmol) {
   t += `</tbody></table>`;
   document.getElementById('hm-container').innerHTML = t;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // KFRE 4-variable (Tangri JASN 2011 / JAMA 2016)
 // ─────────────────────────────────────────────────────
@@ -1133,13 +1228,13 @@ function calcKFRE(age, sex, egfr, acrMgMmol) {
     r5: Math.min(99.9, Math.max(0.1, Math.round(r5*1000)/10))
   };
 }
-
+ 
 function renderKFRE(age, sex, egfr, acrMgMmol) {
   const wrap = document.getElementById('kfre-wrap');
   if (!age || !sex || !egfr || !acrMgMmol) { wrap.innerHTML=''; return; }
-
+ 
   const { r2, r5 } = calcKFRE(age, sex, egfr, acrMgMmol);
-
+ 
   // Pictogram: 10×10 grid, no scrolling needed
   function pictogram(pct, timeframe) {
     const n = Math.round(Math.min(pct, 99));
@@ -1149,7 +1244,7 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
     // Build 10×10 grid (100 squares)
     let sqs = '';
     for (let i = 0; i < 100; i++) {
-      sqs += `<span class="psq" style="background:${i < n ? col : '#e2ddd4'}" title="${i < n ? 'At risk' : 'Not at risk'}"></span>`;
+      sqs += `<div class="psq" style="background:${i < n ? col : '#e2ddd4'}" title="${i < n ? 'At risk' : 'Not at risk'}"></div>`;
     }
     return `
       <div class="kfre-pbox">
@@ -1161,7 +1256,7 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
         ${isHighRisk ? `<div style="font-size:12px;font-weight:600;color:${col};margin-top:8px;padding:6px 10px;background:${col}22;border-radius:6px;text-align:center">Please discuss these results with your GP or a specialist</div>` : ''}
       </div>`;
   }
-
+ 
   wrap.innerHTML = `
     <div class="sec-lbl">Kidney Failure Risk Estimate (KFRE)</div>
     <div class="ib blue" style="font-size:13px;margin-bottom:16px">
@@ -1176,7 +1271,7 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
     </div>
     <div class="footnote">† The KFRE is best validated for eGFR &lt;60 ml/min/1.73m². At higher eGFR values the model has less precision and results should be interpreted with particular caution.</div>`;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // BLOOD PRESSURE
 // ─────────────────────────────────────────────────────
@@ -1191,7 +1286,7 @@ function showBP() {
   const d = parseFloat(document.getElementById('bpD').value);
   const b = document.getElementById('bp-result');
   if (!s || !d) { b.innerHTML=''; return; }
-
+ 
   // Grade each component independently, then take the worse of the two.
   // This means one high value always wins — a normal diastolic never rescues an abnormal systolic.
   function sGrade(v) {
@@ -1206,9 +1301,9 @@ function showBP() {
     if (v <= 99) return 2;
     return 3;
   }
-
+ 
   const grade = Math.max(sGrade(s), dGrade(d));
-
+ 
   let cls, lbl, adv;
   if (grade === 0) {
     cls='bpg'; lbl='✓ Optimal (&lt; 130/80)';
@@ -1225,40 +1320,320 @@ function showBP() {
   }
   b.innerHTML = `<div class="bpi ${cls}"><div class="bpdot"></div><div><strong>${s}/${d} mmHg — ${lbl}</strong><br><span style="font-size:13px;margin-top:4px;display:block">${adv}</span></div></div>`;
 }
-
+ 
 // ─────────────────────────────────────────────────────
 // PRINT REPORT
 // Must be called synchronously from a tap event on mobile
 // ─────────────────────────────────────────────────────
 function printReport() {
-  // Populate the print-only name header
-  const name = document.getElementById('patientName').value.trim();
-  const nameDisplay = document.getElementById('print-name-display');
-  const dateDisplay = document.getElementById('print-date-display');
-  nameDisplay.textContent = name || 'Kidney Health Report';
-  const rDate = document.getElementById('rDate').value;
-  const age = document.getElementById('age').value;
-  const sex = document.querySelector('input[name="sex"]:checked')?.value;
-  let metaLine = '';
-  if (age && sex) metaLine = `${age}-year-old ${sex.charAt(0).toUpperCase()+sex.slice(1)}`;
-  if (rDate) {
-    const d = new Date(rDate);
-    metaLine += (metaLine ? '  ·  ' : '') + 'Result date: ' + d.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  }
-  metaLine += '  ·  Generated: ' + new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
-  dateDisplay.textContent = metaLine;
-  setTimeout(function() { window.print(); }, 0);
+  if (!curEGFR) { alert('Please calculate your eGFR first before printing.'); return; }
+  buildPrintReport();
+  setTimeout(function() { window.print(); }, 100);
 }
-
+ 
+function stageColor(egfr) {
+  if (egfr >= 60) return 'gn';
+  if (egfr >= 45) return 'yl';
+  if (egfr >= 15) return 'or';
+  return 'rd';
+}
+ 
+function bpGrade(s, d) {
+  function sg(v){ return v<130?0:v<=139?1:v<=159?2:3; }
+  function dg(v){ return v<80?0:v<=89?1:v<=99?2:3; }
+  return Math.max(sg(s),dg(d));
+}
+ 
+function buildPrintReport() {
+  const name    = document.getElementById('patientName').value.trim();
+  const age     = document.getElementById('age').value;
+  const sex     = document.querySelector('input[name="sex"]:checked')?.value || '';
+  const rDate   = document.getElementById('rDate').value;
+  const creatRaw = parseFloat(document.getElementById('creat').value);
+  const scrMgDL = useMgDL ? creatRaw : creatRaw / 88.42;
+  const htCm    = getHeightCm();
+  const wtKg    = getWeightKg();
+  const bmi     = wtKg / ((htCm/100)**2);
+  const bpS     = parseFloat(document.getElementById('bpS').value);
+  const bpD     = parseFloat(document.getElementById('bpD').value);
+  const hasBP   = !isNaN(bpS) && !isNaN(bpD);
+  const hasACR  = curACR_mgmmol !== null;
+ 
+  const si = stageOf(curEGFR);
+  const egfrCls = stageColor(curEGFR);
+ 
+  const fmtD = (ds) => {
+    if (!ds) return '—';
+    const d = new Date(ds);
+    return d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'});
+  };
+ 
+  // Trend data
+  let allReadings = [...prevReadings];
+  const cd = document.getElementById('rDate').value;
+  if (cd && curEGFR && !allReadings.find(r=>r.date===cd)) {
+    allReadings.push({date:cd, creat_mgdl:scrMgDL, egfr:curEGFR, cur:true});
+    allReadings.sort((a,b)=>a.date.localeCompare(b.date));
+  }
+  const hasTrend = allReadings.length >= 2;
+ 
+  // Slope
+  let slopePerYear = null;
+  if (hasTrend && allReadings.length >= 2) {
+    const first = allReadings[0], last = allReadings[allReadings.length-1];
+    const years = (new Date(last.date) - new Date(first.date)) / (365.25*24*3600*1000);
+    if (years > 0) slopePerYear = (last.egfr - first.egfr) / years;
+  }
+ 
+  // BP label
+  let bpLabel = '', bpCls = '';
+  if (hasBP) {
+    const g = bpGrade(bpS, bpD);
+    if (g===0){bpLabel='Optimal (<130/80)';bpCls='gn';}
+    else if(g===1){bpLabel='Mildly elevated (130–139/80–89)';bpCls='yl';}
+    else if(g===2){bpLabel='Elevated (140–159/90–99)';bpCls='or';}
+    else{bpLabel='Significantly raised (≥160/≥100)';bpCls='rd';}
+  }
+ 
+  // ACR label
+  let acrLabel='', acrCls='';
+  if (hasACR) {
+    if (curACR_mgmmol<3){acrLabel='A1 — Normal (<3 mg/mmol)';acrCls='gn';}
+    else if(curACR_mgmmol<30){acrLabel='A2 — Moderately increased (3–30 mg/mmol)';acrCls='yl';}
+    else{acrLabel='A3 — Severely increased (≥30 mg/mmol)';acrCls='or';}
+  }
+ 
+  // KFRE
+  let kfre2='—', kfre5='—', kfrePict2='', kfrePict5='';
+  if (hasACR && curEGFR && age && sex) {
+    const k = calcKFRE(parseFloat(age), sex, curEGFR, curACR_mgmmol);
+    kfre2 = k.r2 + '%'; kfre5 = k.r5 + '%';
+    const buildPict = (pct) => {
+      const n = Math.round(Math.min(pct,99));
+      const col = pct<5?'#2d7a4f':pct<20?'#e07020':'#c0392b';
+      const txtCol = pct<5?'#2d7a4f':pct<20?'#cc5500':'#c0392b';
+      let sq='';
+      for(let i=0;i<100;i++) sq+=`<span class="pr-psq" style="background:${i<n?col:'#e2ddd4'}"></span>`;
+      return `<div class="pr-pbox">
+        <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${pct>=5?'2':'2'}-year risk</div>
+        <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
+        <div style="font-size:9px;color:#9a9088;margin-bottom:4px">kidney failure risk</div>
+        <div class="pr-pgrid">${sq}</div>
+        <div style="font-size:8px;color:#9a9088;margin-top:3px">Each square = 1 in 100</div>
+      </div>`;
+    };
+    kfrePict2 = buildPict(k.r2).replace('2-year risk','2-year risk');
+    kfrePict5 = buildPict(k.r5).replace('2-year risk','5-year risk');
+    // fix labels
+    kfrePict2 = kfrePict2.replace('>2-year risk<','>2-year risk<');
+    kfrePict5 = kfrePict5.replace('>2-year risk<','>5-year risk<');
+  }
+ 
+  // Interpretation boxes
+  const interpBoxes = () => {
+    let boxes = '';
+    // eGFR
+    if (curEGFR >= 60) boxes += `<div class="pr-ib gn"><strong>eGFR ${curEGFR} — Stage ${si.stage} (${si.desc}).</strong> eGFR is in the mildly reduced or normal range. Monitoring is important to detect any ongoing decline.</div>`;
+    else if (curEGFR >= 45) boxes += `<div class="pr-ib yl"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately reduced. A confirmatory repeat blood test is recommended within 8 weeks.</div>`;
+    else if (curEGFR >= 30) boxes += `<div class="pr-ib or"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately to severely reduced. Repeat within 4 weeks. Nephrology referral should be discussed with your GP.</div>`;
+    else boxes += `<div class="pr-ib rd"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Severely reduced. Urgent GP review required. Nephrology referral very likely needed.</div>`;
+ 
+    // Trend
+    if (slopePerYear !== null) {
+      const absSlope = Math.abs(slopePerYear).toFixed(1);
+      if (slopePerYear < -5) boxes += `<div class="pr-ib rd"><strong>Rapid eGFR decline detected:</strong> approximately ${absSlope} mL/min/1.73m² per year — above the NICE threshold of 5/year for referral consideration. Discuss with your GP urgently.</div>`;
+      else if (slopePerYear < -2) boxes += `<div class="pr-ib or"><strong>Progressive eGFR decline:</strong> approximately ${absSlope} mL/min/1.73m² per year. This warrants close monitoring and review of modifiable risk factors (BP, proteinuria, medications).</div>`;
+      else if (slopePerYear < 0) boxes += `<div class="pr-ib yl"><strong>Mild eGFR decline:</strong> approximately ${absSlope} mL/min/1.73m² per year. Within the expected range for age-related decline, but ongoing monitoring is recommended.</div>`;
+      else boxes += `<div class="pr-ib gn"><strong>Stable or improving eGFR</strong> over the period of observation. Continue monitoring as advised.</div>`;
+    }
+ 
+    // BP
+    if (hasBP) {
+      if (bpS < 130 && bpD < 80) boxes += `<div class="pr-ib gn"><strong>Blood pressure ${bpS}/${bpD} mmHg — within NICE CKD target (&lt;130/80).</strong> Continue lifestyle measures and regular monitoring.</div>`;
+      else if (bpGrade(bpS,bpD)===1) boxes += `<div class="pr-ib yl"><strong>Blood pressure ${bpS}/${bpD} mmHg — mildly elevated.</strong> Lifestyle measures and regular monitoring recommended. Discuss at next GP appointment.</div>`;
+      else if (bpGrade(bpS,bpD)===2) boxes += `<div class="pr-ib or"><strong>Blood pressure ${bpS}/${bpD} mmHg — elevated, above NICE CKD target of &lt;130/80.</strong> GP review and likely medication adjustment needed. ACE inhibitor or ARB is preferred in CKD with proteinuria.</div>`;
+      else boxes += `<div class="pr-ib rd"><strong>Blood pressure ${bpS}/${bpD} mmHg — significantly raised.</strong> Urgent GP contact recommended. Seek same-day assessment.</div>`;
+    }
+ 
+    // ACR
+    if (hasACR) {
+      if (curACR_mgmmol < 3) boxes += `<div class="pr-ib gn"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — no significant albuminuria (A1).</strong> Continue routine monitoring.</div>`;
+      else if (curACR_mgmmol < 30) boxes += `<div class="pr-ib yl"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — microalbuminuria present (A2).</strong> Increases both CKD progression and cardiovascular risk. Discuss with GP. Renin-angiotensin system blockade (ACE inhibitor or ARB) may be indicated.</div>`;
+      else boxes += `<div class="pr-ib or"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — significant proteinuria (A3).</strong> Substantially increases risk. GP review and likely nephrology referral warranted.</div>`;
+    }
+ 
+    return boxes;
+  };
+ 
+  // Next steps
+  const nextSteps = () => {
+    const steps = [];
+    if (hasBP && bpGrade(bpS,bpD) >= 2) steps.push({urg:true, title:'Discuss blood pressure management with your GP soon', detail:`${bpS}/${bpD} mmHg is above the CKD target of <130/80 mmHg. An ACE inhibitor or ARB is the preferred agent in CKD with proteinuria — ask your GP specifically about this.`});
+    if (curEGFR < 30) steps.push({urg:true, title:'Urgent GP review required', detail:`eGFR ${curEGFR} warrants prompt assessment and likely nephrology referral.`});
+    else if (curEGFR < 60) steps.push({urg:true, title:`Repeat blood tests within ${curEGFR>=45?'8':'4'} weeks`, detail:'A single eGFR can be affected by dehydration, illness or exercise. A confirmatory result is needed before any diagnosis is confirmed.'});
+    else steps.push({urg:false, title:'Repeat blood tests as recommended by your GP', detail:'Even with a normal eGFR, regular monitoring is important to detect trends over time.'});
+    if (!hasACR) steps.push({urg:false, title:'Request a urine ACR test from your GP', detail:'A first morning urine sample checks for albumin — a key marker of kidney damage not captured by eGFR alone. It is essential for accurate CKD staging.'});
+    if (hasTrend && slopePerYear !== null && slopePerYear < -5) steps.push({urg:true, title:'eGFR decline >5/year — discuss nephrology referral with your GP', detail:'NICE NG203 identifies a decline of more than 5 mL/min/1.73m² per year as a criterion for nephrology referral consideration.'});
+    steps.push({urg:false, title:'Annual monitoring of eGFR, creatinine, ACR and blood pressure', detail:`NICE NG203 recommends monitoring frequency based on CKD stage and albuminuria category. ${si.stage} ${hasACR?(curACR_mgmmol<3?'+ A1':'+ '+(curACR_mgmmol<30?'A2':'A3')):''}  warrants at least annual review.`});
+    steps.push({urg:false, title:'Lifestyle measures to slow CKD progression', detail:'Reduce dietary salt to <6g/day, maintain a healthy weight, exercise ≥150 min/week, avoid NSAIDs (ibuprofen etc.), stay well hydrated, and inform your pharmacist/GP about CKD before starting any new medication.'});
+    return steps.map((s,i) => `<div class="pr-step"><div class="pr-stepn${s.urg?' urg':''}">${i+1}</div><div class="pr-stept"><strong>${s.title}</strong><span>${s.detail}</span></div></div>`).join('');
+  };
+ 
+  // KDIGO table
+  const kdigoTable = () => {
+    if (!hasACR) return '<div style="font-size:11px;color:#9a9088;font-style:italic">ACR not entered — KDIGO risk category unavailable.</div>';
+    const eIdx = si.idx;
+    const aIdx = acrCatOf(curACR_mgmmol);
+    const KM2 = [[1,2,3],[1,2,3],[2,3,4],[3,4,4],[4,4,5],[5,5,5]];
+    const KL2 = ['Low','Mod.','High','V.High','Refer'];
+    const KC2 = ['pkc1','pkc2','pkc3','pkc4','pkc5'];
+    const eL = ['G1 ≥90','G2 60–89','G3a 45–59','G3b 30–44','G4 15–29','G5 <15'];
+    const aL = ['A1 <3','A2 3–30','A3 ≥30'];
+    let t = `<div class="pr-kdigo">
+      <div class="pr-kh"></div>${aL.map((l,ci)=>`<div class="pr-kh" style="${ci===aIdx?'color:#1a3d5c;font-weight:700':''}">${l}</div>`).join('')}`;
+    KM2.forEach((row,ri)=>{
+      t+=`<div class="pr-kr" style="${ri===eIdx?'color:#1a3d5c;font-weight:700':''}">${eL[ri]}</div>`;
+      row.forEach((risk,ci)=>{
+        const act=ri===eIdx&&ci===aIdx;
+        t+=`<div class="pr-kc ${KC2[risk-1]}${act?' pkc-active':''}">${act?'▶ ':''}${KL2[risk-1]}</div>`;
+      });
+    });
+    t+='</div>';
+    return t;
+  };
+ 
+  // Build full report HTML
+  const sexLabel = sex ? sex.charAt(0).toUpperCase()+sex.slice(1) : '';
+  const creatDisp2 = useMgDL ? creatRaw.toFixed(2)+' mg/dL' : Math.round(creatRaw)+' μmol/L';
+ 
+  let trendRows = '';
+  if (hasTrend) {
+    allReadings.forEach(r => {
+      const badgeCls = r.egfr>=90?'bg1':r.egfr>=60?'bg2':r.egfr>=45?'bg3a':'bg3b';
+      const stage = stageOf(r.egfr).stage;
+      trendRows += `<tr${r.cur?' class="cur"':''}>
+        <td>${fmtD(r.date)}${r.cur?' ★':''}</td>
+        <td>${useMgDL?r.creat_mgdl.toFixed(2)+' mg/dL':Math.round(r.creat_mgdl*88.42)+' μmol/L'}</td>
+        <td>${r.egfr}</td>
+        <td><span class="pr-badge ${badgeCls}">${stage}</span></td>
+      </tr>`;
+    });
+    if (slopePerYear !== null) {
+      const last = allReadings[allReadings.length-1];
+      const proj5 = Math.max(0,(last.egfr + slopePerYear*5).toFixed(1));
+      const proj10 = Math.max(0,(last.egfr + slopePerYear*10).toFixed(1));
+      if (slopePerYear < 0) {
+        trendRows += `<tr class="proj"><td>~5 yrs (projected)</td><td>—</td><td>~${proj5}</td><td><span class="pr-badge ${proj5>=60?'bg2':proj5>=45?'bg3a':'bg3b'}">${stageOf(parseFloat(proj5)).stage}</span></td></tr>`;
+        trendRows += `<tr class="proj"><td>~10 yrs (projected)</td><td>—</td><td>~${proj10}</td><td><span class="pr-badge ${proj10>=60?'bg2':proj10>=45?'bg3a':'bg3b'}">${stageOf(parseFloat(proj10)).stage}</span></td></tr>`;
+      }
+    }
+  }
+ 
+  const html = `
+  <div class="pr-hdr">
+    <div>
+      <div class="pr-brand">Kidney Health Report${name?' — '+name:''}</div>
+      <div class="pr-sub">PatientThread · Dr C. Lawrence, Consultant Nephrologist · hertskidneycare.co.uk</div>
+    </div>
+    <div class="pr-meta">
+      ${name?`<strong>${name}</strong>`:''}
+      ${age&&sexLabel?age+'-year-old '+sexLabel:''}${htCm&&wtKg?' · '+htCm.toFixed(0)+' cm · '+wtKg.toFixed(1)+' kg · BMI '+bmi.toFixed(1):''}
+      <br>Result date: ${fmtD(rDate)} &nbsp;·&nbsp; Generated: ${fmtD(new Date().toISOString().split('T')[0])}
+    </div>
+  </div>
+ 
+  <div class="pr-sec">Key Measurements</div>
+  <div class="pr-metrics">
+    <div class="pr-metric bl">
+      <div class="pr-mval">${curEGFR}</div>
+      <div class="pr-munit">mL/min/1.73m²</div>
+      <div class="pr-mlbl">eGFR (CKD-EPI 2021)</div>
+      <div class="pr-msub">Stage ${si.stage}</div>
+    </div>
+    ${hasACR?`<div class="pr-metric ${acrCls.replace('gn','gn').replace('yl','yl').replace('or','or')}">
+      <div class="pr-mval">${curACR_mgmmol.toFixed(1)}</div>
+      <div class="pr-munit">mg/mmol</div>
+      <div class="pr-mlbl">Urine ACR</div>
+      <div class="pr-msub">${curACR_mgmmol<3?'A1 — Normal':curACR_mgmmol<30?'A2 — Mod. increased':'A3 — Severely increased'}</div>
+    </div>`:'<div class="pr-metric"><div class="pr-mval" style="font-size:14px">—</div><div class="pr-munit"> </div><div class="pr-mlbl">Urine ACR</div><div class="pr-msub">Not entered</div></div>'}
+    ${hasBP?`<div class="pr-metric ${bpCls}">
+      <div class="pr-mval" style="font-size:16px">${bpS}/${bpD}</div>
+      <div class="pr-munit">mmHg</div>
+      <div class="pr-mlbl">Blood Pressure</div>
+      <div class="pr-msub">${bpLabel}</div>
+    </div>`:'<div class="pr-metric"><div class="pr-mval" style="font-size:14px">—</div><div class="pr-munit"> </div><div class="pr-mlbl">Blood Pressure</div><div class="pr-msub">Not entered</div></div>'}
+    <div class="pr-metric">
+      <div class="pr-mval">${creatDisp2}</div>
+      <div class="pr-munit"> </div>
+      <div class="pr-mlbl">Serum Creatinine</div>
+      <div class="pr-msub"> </div>
+    </div>
+    <div class="pr-metric ${bmi<18.5||bmi>30?'or':bmi<=25?'gn':'yl'}">
+      <div class="pr-mval">${bmi.toFixed(1)}</div>
+      <div class="pr-munit">kg/m²</div>
+      <div class="pr-mlbl">BMI</div>
+      <div class="pr-msub">${bmi<18.5?'Underweight':bmi<=25?'Healthy':bmi<=30?'Overweight':'Obese'}</div>
+    </div>
+  </div>
+ 
+  <div class="pr-two">
+    <div>
+      <div class="pr-sec">eGFR Trend${slopePerYear!==null?' ('+Math.abs(slopePerYear).toFixed(1)+'/yr '+(slopePerYear<0?'decline':'improvement')+')':(hasTrend?'':' — single reading')}</div>
+      ${hasTrend?`<table class="pr-tbl"><thead><tr><th>Date</th><th>Creatinine</th><th>eGFR</th><th>Stage</th></tr></thead><tbody>${trendRows}</tbody></table><div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">★ Current result · italic = linear projection</div>`
+      :`<div class="pr-ib bl">Single reading only — no previous results entered to show a trend.</div>`}
+ 
+      <div class="pr-sec" style="margin-top:10px">KDIGO Risk Category</div>
+      ${kdigoTable()}
+      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">${hasACR?'Your position is outlined. G = eGFR stage, A = albuminuria category.':'Enter ACR to see KDIGO risk category.'}</div>
+ 
+      ${hasACR&&curEGFR?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
+      <div class="pr-prow">
+        ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r2,'2-year risk')}
+        ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r5,'5-year risk')}
+      </div>
+      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">KFRE (Tangri et al., JASN 2011). Best validated for eGFR &lt;60 ml/min. Each square = 1 person in 100.</div>`:''}
+    </div>
+ 
+    <div>
+      <div class="pr-sec">Clinical Interpretation</div>
+      ${interpBoxes()}
+      <div class="pr-sec" style="margin-top:10px">Recommended Next Steps</div>
+      ${nextSteps()}
+    </div>
+  </div>
+ 
+  <div class="pr-foot">
+    <div class="pr-disc">This report is generated by the PatientThread Kidney Health Checker for educational purposes only. It is not a clinical diagnosis and does not replace a consultation with your own doctor. CKD-EPI 2021 (race-free) · KFRE 4-variable (Tangri et al.) · KDIGO 2024 · NICE NG203. If you feel unwell: GP or NHS 111. Emergency: 999.</div>
+    <div class="pr-dr"><strong>Dr Christopher Lawrence</strong>Consultant Nephrologist<br>hertskidneycare.co.uk<br><span style="font-size:8px">A PatientThread Ltd product</span></div>
+  </div>`;
+ 
+  document.getElementById('pr-content').innerHTML = html;
+}
+ 
+function buildKfrePict(pct, label) {
+  const n = Math.round(Math.min(pct,99));
+  const col = pct<5?'#2d7a4f':pct<20?'#e07020':'#c0392b';
+  const txtCol = pct<5?'#2d7a4f':pct<20?'#cc5500':'#c0392b';
+  let sq='';
+  for(let i=0;i<100;i++) sq+=`<span class="pr-psq" style="background:${i<n?col:'#e2ddd4'}"></span>`;
+  return `<div class="pr-pbox">
+    <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${label}</div>
+    <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
+    <div style="font-size:9px;color:#9a9088;margin-bottom:4px">kidney failure risk</div>
+    <div class="pr-pgrid">${sq}</div>
+    <div style="font-size:8px;color:#9a9088;margin-top:3px">Each square = 1 in 100</div>
+  </div>`;
+}
+ 
 // ─────────────────────────────────────────────────────
 // RESET — clear localStorage and wipe the form
 // ─────────────────────────────────────────────────────
 function resetData() {
   if (!confirm('Clear all saved data and start over?')) return;
-
+ 
   // Clear storage
   try { localStorage.removeItem(LS_KEY); } catch(e) {}
-
+ 
   // Reset all state variables
   useMgDL = false;
   useACRmgg = false;
@@ -1268,7 +1643,7 @@ function resetData() {
   curACR_mgmmol = null;
   prevReadings = [];
   if (chartInst) { chartInst.destroy(); chartInst = null; }
-
+ 
   // Reset all form inputs
   document.getElementById('patientName').value = '';
   document.getElementById('age').value = '';
@@ -1285,43 +1660,68 @@ function resetData() {
   document.getElementById('prev-date').value = '';
   document.getElementById('prev-creat').value = '';
   document.getElementById('rDate').value = new Date().toISOString().split('T')[0];
-
+ 
   // Reset radio buttons
   document.getElementById('sM').checked = true;
   document.querySelectorAll('input[name="fr"]').forEach(r => r.checked = false);
   document.querySelectorAll('input[name="acr"]').forEach(r => r.checked = false);
   document.querySelectorAll('input[name="bp"]').forEach(r => r.checked = false);
-
+ 
   // Reset unit toggles to defaults
   document.getElementById('creatToggle').checked = false; toggleCreat();
   document.getElementById('htToggle').checked = false; toggleHeight();
   document.getElementById('wtToggle').checked = false; toggleWeight();
   document.getElementById('acrToggle').checked = false;
-
+ 
   // Hide all result cards
   ['c-results','c-trend','c-acr','c-bp','c-report','c-res'].forEach(id =>
     document.getElementById(id).classList.add('hidden'));
-
+ 
   // Hide all sub-sections
   ['fr-advice','multi-readings','acr-no','acr-yes','kdigo-wrap',
    'chart-wrap','bp-no','bp-yes','acr-result','cg-section'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
-
+ 
   // Clear dynamic content
   ['advice-boxes','r-list','retest-box','acr-result','bp-result',
    'hm-container','kfre-wrap','egfr-val','ckd-stage','ckd-desc','bmi-val','bmi-flag','cg-val'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.innerHTML = el.id === 'egfr-val' ? '—' : el.id === 'ckd-stage' ? '—' : el.id === 'ckd-desc' ? '—' : el.id === 'bmi-val' ? '—' : el.id === 'cg-val' ? '—' : '';
   });
-
+ 
   // Scroll back to top
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
-
+ 
 // ─────────────────────────────────────────────────────
-// INIT — restore saved data on load
+// LIVE RECALC — called on any input change once results are showing
+// ─────────────────────────────────────────────────────
+function liveRecalc() {
+  // Only recalc if results are already visible (i.e. user has already hit Calculate once)
+  if (document.getElementById('c-results').classList.contains('hidden')) return;
+  // Silent recalc — no alert, no scroll
+  calculate(true);
+  // Cascade: re-render ACR if it's already been entered
+  const acrVal = parseFloat(document.getElementById('acr-in').value);
+  if (curACR_mgmmol !== null && acrVal) { showACR(); }
+  // Cascade: re-render BP if already entered
+  const bpS = document.getElementById('bpS').value;
+  const bpD = document.getElementById('bpD').value;
+  if (bpS && bpD) { showBP(); }
+  // Cascade: re-render chart/list if trend section is open
+  const multiOpen = !document.getElementById('multi-readings').classList.contains('hidden');
+  if (multiOpen) { renderList(); renderChart(); }
+  // Cascade: re-render retest box if single-reading section is open
+  const retestOpen = !document.getElementById('fr-advice').classList.contains('hidden');
+  if (retestOpen) { renderRetest(curEGFR); }
+  // Save updated state
+  saveToStorage();
+}
+ 
+// ─────────────────────────────────────────────────────
+// INIT — restore saved data on load, wire live listeners
 // ─────────────────────────────────────────────────────
 window.addEventListener('DOMContentLoaded', () => {
   // Set today's date as default
@@ -1330,7 +1730,33 @@ window.addEventListener('DOMContentLoaded', () => {
     document.getElementById('rDate').value = today;
   }
   loadFromStorage();
+ 
+  // Wire every primary input to liveRecalc
+  // Main inputs
+  ['age','height','weight','htFt','htIn','wtSt','wtLbs','creat','rDate'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener('input', liveRecalc);
+      el.addEventListener('change', liveRecalc);
+    }
+  });
+  // Sex radio buttons
+  document.querySelectorAll('input[name="sex"]').forEach(r =>
+    r.addEventListener('change', liveRecalc)
+  );
+  // ACR input — already has oninput=showACR but showACR also needs recalc trigger
+  // We hook it so showACR updates curACR_mgmmol then liveRecalc re-renders KDIGO/KFRE
+  const acrIn = document.getElementById('acr-in');
+  if (acrIn) acrIn.addEventListener('input', () => { showACR(); });
+ 
+  // BP inputs already have oninput=showBP — that's fine, no recalc needed for BP standalone
+  // But we need liveRecalc when BP changes so the print report updates
+  ['bpS','bpD'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => { showBP(); saveToStorage(); });
+  });
 });
 </script>
 </body>
 </html>
+ 
