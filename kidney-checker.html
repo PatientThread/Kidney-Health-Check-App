@@ -20,7 +20,7 @@
     --shadow:0 2px 12px rgba(0,0,0,.06);--shadow-lg:0 8px 40px rgba(0,0,0,.10);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;min-height:100vh}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);font-size:17px;line-height:1.6;min-height:100vh}
  
   /* DISCLAIMER */
   #disc-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,15,30,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px}
@@ -61,7 +61,7 @@
   .fg{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   .fgrp{display:flex;flex-direction:column;gap:6px}
   label{font-size:13px;font-weight:500;color:var(--text-muted);letter-spacing:.02em}
-  input[type=number],input[type=date],select{border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:15px;font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);transition:border-color .2s,box-shadow .2s;width:100%;-webkit-appearance:none}
+  input[type=number],input[type=date],select{border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:17px;font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);transition:border-color .2s,box-shadow .2s;width:100%;-webkit-appearance:none}
   input[type=number]:focus,input[type=date]:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-light)}
   .iu{position:relative}
   .iu input{padding-right:72px}
@@ -114,7 +114,7 @@
   .r-list{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
   .r-item{display:flex;align-items:center;gap:12px;background:var(--surface-alt);border-radius:8px;padding:10px 14px;font-size:14px}
   .r-date{color:var(--text-muted);flex:1}
-  .r-val{font-weight:600;color:var(--accent-dark);font-size:15px}
+  .r-val{font-weight:600;color:var(--accent-dark);font-size:17px}
   .r-del{background:none;border:none;cursor:pointer;color:var(--text-light);font-size:16px;padding:2px 6px;border-radius:4px;transition:color .2s,background .2s}
   .r-del:hover{color:var(--red);background:var(--red-light)}
  
@@ -294,7 +294,7 @@
   </div>
   <div class="fgrp" style="margin-bottom:16px">
     <label for="patientName">Name <span style="font-weight:400;color:var(--text-light)">(optional — appears on printed report only)</span></label>
-    <input type="text" id="patientName" placeholder="e.g. John Smith" style="border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:15px;font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);width:100%;max-width:360px" oninput="saveToStorage()">
+    <input type="text" id="patientName" placeholder="e.g. John Smith" style="border:1.5px solid var(--border);border-radius:8px;padding:10px 12px;font-size:17px;font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--text);width:100%;max-width:360px" oninput="saveToStorage()">
   </div>
   <div class="fg">
     <div class="fgrp">
@@ -541,13 +541,13 @@
 <div id="print-report" style="display:none">
 <style>
   /* Print report — tightly tuned for one A4 page */
-  .pr { font-family: 'DM Sans', sans-serif; font-size: 10.5px; color: #1a1612; line-height: 1.4; }
+  .pr { font-family: 'DM Sans', sans-serif; font-size: 12.5px; color: #1a1612; line-height: 1.45; }
   .pr-hdr { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1a3d5c; padding-bottom: 7px; margin-bottom: 9px; }
   .pr-brand { font-family: 'DM Serif Display', serif; font-size: 15px; color: #1a3d5c; }
   .pr-sub { font-size: 9px; color: #9a9088; letter-spacing: .05em; text-transform: uppercase; margin-top: 1px; }
   .pr-meta { text-align: right; font-size: 10px; color: #6b6258; line-height: 1.6; }
   .pr-meta strong { font-size: 12px; color: #1a1612; display: block; }
-  .pr-sec { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 2px; margin: 6px 0 4px; }
+  .pr-sec { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 2px; margin: 6px 0 4px; }
   .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 4px; margin-bottom: 5px; }
   .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 5px; text-align: center; }
   .pr-metric.yl { background: #fdf6e3; border-color: #b8860b; }
@@ -555,16 +555,16 @@
   .pr-metric.rd { background: #fdecea; border-color: #c0392b; }
   .pr-metric.gn { background: #e8f5ee; border-color: #2d7a4f; }
   .pr-metric.bl { background: #d6e8f5; border-color: #2c5f8a; }
-  .pr-mval { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1; color: #1a3d5c; }
+  .pr-mval { font-family: 'DM Serif Display', serif; font-size: 19px; line-height: 1; color: #1a3d5c; }
   .pr-metric.yl .pr-mval { color: #b8860b; }
   .pr-metric.or .pr-mval { color: #cc5500; }
   .pr-metric.rd .pr-mval { color: #c0392b; }
   .pr-metric.gn .pr-mval { color: #2d7a4f; }
   .pr-munit { font-size: 7px; color: #9a9088; margin-top: 1px; }
-  .pr-mlbl { font-size: 8px; font-weight: 600; color: #6b6258; margin-top: 3px; }
+  .pr-mlbl { font-size: 9px; font-weight: 600; color: #6b6258; margin-top: 3px; }
   .pr-msub { font-size: 7px; color: #9a9088; }
   .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .pr-tbl { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+  .pr-tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
   .pr-tbl th { background: #f7f5f0; padding: 3px 6px; font-size: 8px; font-weight: 600; color: #6b6258; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
   .pr-tbl td { padding: 3px 6px; border-top: 1px solid #e2ddd4; }
   .pr-tbl tr.cur td { background: #d6e8f5; font-weight: 600; }
@@ -573,7 +573,7 @@
   .bg1,.bg2 { background: #e8f5ee; color: #2d7a4f; }
   .bg3a { background: #fdf6e3; color: #b8860b; }
   .bg3b { background: #fdf0e8; color: #cc5500; }
-  .pr-ib { border-radius: 4px; padding: 5px 8px; font-size: 9.5px; line-height: 1.45; border-left: 3px solid; margin-bottom: 4px; }
+  .pr-ib { border-radius: 4px; padding: 5px 8px; font-size: 11px; line-height: 1.45; border-left: 3px solid; margin-bottom: 4px; }
   .pr-ib.gn { background: #e8f5ee; border-color: #2d7a4f; color: #1a4a30; }
   .pr-ib.yl { background: #fdf6e3; border-color: #b8860b; color: #5a4010; }
   .pr-ib.or { background: #fdf0e8; border-color: #cc5500; color: #7a2a00; }
@@ -583,14 +583,14 @@
   .pr-step { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 4px; padding: 4px 6px; background: #f7f5f0; border-radius: 4px; border: 1px solid #e2ddd4; }
   .pr-stepn { width: 15px; height: 15px; border-radius: 50%; background: #2c5f8a; color: #fff; font-size: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .pr-stepn.urg { background: #cc5500; }
-  .pr-stept strong { display: block; font-size: 9.5px; }
-  .pr-stept span { font-size: 8.5px; color: #6b6258; }
+  .pr-stept strong { display: block; font-size: 11px; }
+  .pr-stept span { font-size: 10px; color: #6b6258; }
   .pr-prow { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
   .pr-pbox { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 6px 8px; }
-  .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1; }
+  .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 19px; line-height: 1; }
   .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 4px; }
   .pr-psq { display: block; width: 100%; height: 8px; border-radius: 1px; }
-  .pr-foot { margin-top: 5px; padding-top: 4px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 7.5px; color: #9a9088; line-height: 1.4; }
+  .pr-foot { margin-top: 5px; padding-top: 4px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; color: #9a9088; line-height: 1.4; }
   .pr-disc { max-width: 480px; font-style: italic; }
   .pr-dr { text-align: right; }
   .pr-dr strong { display: block; font-size: 10px; color: #1a3d5c; }
