@@ -371,19 +371,22 @@
     <div class="c-icon">📊</div>
     <div><div class="c-title">Your eGFR Result</div><div class="c-sub">CKD-EPI 2021 (race-free equation)</div></div>
   </div>
-  <div id="egfr-banner" class="rbanner">
-    <div>
-      <div class="r-egfr" id="egfr-val">—</div>
-      <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">mL/min/1.73m² eGFR</div>
+  <div id="egfr-banner" class="rbanner" style="flex-direction:column;align-items:stretch;gap:0;padding-bottom:16px">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:20px;flex-wrap:wrap">
+      <div>
+        <div class="r-egfr" id="egfr-val">—</div>
+        <div style="font-size:13px;color:var(--text-muted);margin-top:4px;">mL/min/1.73m² eGFR</div>
+      </div>
+      <div style="text-align:right">
+        <div class="r-stage" id="ckd-stage">—</div>
+        <div class="r-lbl" id="ckd-desc">—</div>
+        <div id="ckd-full-stage" style="margin-top:8px;font-size:13px;font-weight:500;opacity:.9"></div>
+      </div>
     </div>
-    <div style="text-align:right">
-      <div class="r-stage" id="ckd-stage">—</div>
-      <div class="r-lbl" id="ckd-desc">—</div>
+    <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.08)">
+      <span>BMI: <strong id="bmi-val">—</strong> kg/m²</span>
+      <span id="bmi-flag" style="font-size:13px;font-weight:500"></span>
     </div>
-  </div>
-  <div style="display:flex;align-items:center;justify-content:space-between;font-size:14px;margin-bottom:8px">
-    <span style="color:var(--text-muted)">BMI: <strong id="bmi-val">—</strong> kg/m²</span>
-    <span id="bmi-flag" style="font-size:13px;font-weight:500"></span>
   </div>
   <div id="cg-section" class="cgbox hidden">
     <div style="font-weight:600;font-size:14px;color:var(--accent-dark);margin-bottom:6px">Cockcroft–Gault Creatinine Clearance (adjusted body weight)</div>
@@ -404,7 +407,6 @@
       <tr><td><span class="spill" style="background:#fdecea;color:#c0392b">G5</span></td><td>&lt; 15</td><td>Kidney failure</td></tr>
     </tbody>
   </table>
-  <div id="full-stage-box" class="hidden" style="margin-bottom:16px"></div>
   <div class="sec-lbl">Guidance</div>
   <div id="advice-boxes"></div>
 </div>
@@ -927,25 +929,18 @@ function calculate(silent) {
 }
  
 function renderFullStage(egfr, acrMgMmol) {
-  const box = document.getElementById('full-stage-box');
-  if (!egfr) { box.classList.add('hidden'); return; }
-  const si = stageOf(egfr);
-  // Colour classes matching CKD stage
-  const bg = {'g1':'var(--green-light)','g2':'var(--green-light)','g3a':'var(--yellow-light)','g3b':'var(--orange-light)','g4':'var(--orange-light)','g5':'var(--red-light)'};
-  const bc = {'g1':'var(--green)','g2':'var(--green)','g3a':'var(--yellow)','g3b':'var(--orange)','g4':'var(--orange)','g5':'var(--red)'};
-  const tc = {'g1':'#1a4a30','g2':'#1a4a30','g3a':'#5a4010','g3b':'#7a2a00','g4':'#7a2a00','g5':'#7a1a10'};
+  const el = document.getElementById('ckd-full-stage');
+  if (!el) return;
+  if (!egfr) { el.textContent = ''; return; }
   let acrLabel = '';
+  let acrDesc = 'Enter ACR below for full classification';
   if (acrMgMmol !== null) {
-    if (acrMgMmol < 3) acrLabel = ' A1';
-    else if (acrMgMmol < 30) acrLabel = ' A2';
-    else acrLabel = ' A3';
+    if (acrMgMmol < 3)       { acrLabel = ' A1'; acrDesc = 'A1 — no significant albuminuria'; }
+    else if (acrMgMmol < 30) { acrLabel = ' A2'; acrDesc = 'A2 — moderately increased albuminuria'; }
+    else                      { acrLabel = ' A3'; acrDesc = 'A3 — severely increased albuminuria'; }
   }
-  box.innerHTML = `<div style="background:${bg[si.cls]};border:2px solid ${bc[si.cls]};border-radius:10px;padding:14px 20px;color:${tc[si.cls]}">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:4px">Your CKD Classification</div>
-    <div style="font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:${tc[si.cls]}">Stage ${si.stage}${acrLabel}</div>
-    <div style="font-size:13px;margin-top:4px;opacity:.85">${si.desc}${acrLabel ? (acrMgMmol < 3 ? ' · A1: no significant albuminuria' : acrMgMmol < 30 ? ' · A2: moderately increased albuminuria' : ' · A3: severely increased albuminuria') : ' · Enter ACR below for full classification'}</div>
-  </div>`;
-  box.classList.remove('hidden');
+  const si = stageOf(egfr);
+  el.innerHTML = `<span style="font-family:'DM Serif Display',serif;font-size:20px;letter-spacing:-.5px">Stage ${si.stage}${acrLabel}</span><br><span style="font-size:12px;font-weight:400;opacity:.8">${acrDesc}</span>`;
 }
  
 function renderAdvice(egfr) {
@@ -1727,14 +1722,14 @@ function resetData() {
  
   // Hide all sub-sections
   ['fr-advice','multi-readings','acr-no','acr-yes','kdigo-wrap',
-   'chart-wrap','bp-no','bp-yes','acr-result','cg-section','full-stage-box'].forEach(id => {
+   'chart-wrap','bp-no','bp-yes','acr-result','cg-section'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
  
   // Clear dynamic content
   ['advice-boxes','r-list','retest-box','acr-result','bp-result',
-   'hm-container','kfre-wrap','egfr-val','ckd-stage','ckd-desc','bmi-val','bmi-flag','cg-val'].forEach(id => {
+   'hm-container','kfre-wrap','egfr-val','ckd-stage','ckd-desc','ckd-full-stage','bmi-val','bmi-flag','cg-val'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.innerHTML = el.id === 'egfr-val' ? '—' : el.id === 'ckd-stage' ? '—' : el.id === 'ckd-desc' ? '—' : el.id === 'bmi-val' ? '—' : el.id === 'cg-val' ? '—' : '';
   });
