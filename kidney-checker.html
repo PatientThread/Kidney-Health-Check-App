@@ -379,8 +379,7 @@
       </div>
       <div style="text-align:right">
         <div class="r-stage" id="ckd-stage">—</div>
-        <div class="r-lbl" id="ckd-desc">—</div>
-        <div id="ckd-full-stage" style="margin-top:8px;font-size:13px;font-weight:500;opacity:.9"></div>
+        <div id="ckd-full-stage" style="margin-top:6px;font-size:13px;opacity:.85;line-height:1.5"></div>
       </div>
     </div>
     <div style="display:flex;align-items:center;justify-content:space-between;font-size:13px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.08)">
@@ -887,7 +886,6 @@ function calculate(silent) {
   void banner.offsetWidth; // force reflow
   banner.classList.add('live-flash');
   document.getElementById('ckd-stage').textContent = 'CKD Stage ' + si.stage;
-  document.getElementById('ckd-desc').textContent = si.desc;
  
   const bmi = wt / ((ht/100)**2);
   const bmiOut = bmi < 20 || bmi > 25;
@@ -931,16 +929,23 @@ function calculate(silent) {
 function renderFullStage(egfr, acrMgMmol) {
   const el = document.getElementById('ckd-full-stage');
   if (!el) return;
-  if (!egfr) { el.textContent = ''; return; }
-  let acrLabel = '';
-  let acrDesc = 'Enter ACR below for full classification';
-  if (acrMgMmol !== null) {
-    if (acrMgMmol < 3)       { acrLabel = ' A1'; acrDesc = 'A1 — no significant albuminuria'; }
-    else if (acrMgMmol < 30) { acrLabel = ' A2'; acrDesc = 'A2 — moderately increased albuminuria'; }
-    else                      { acrLabel = ' A3'; acrDesc = 'A3 — severely increased albuminuria'; }
-  }
+  if (!egfr) { el.innerHTML = ''; return; }
   const si = stageOf(egfr);
-  el.innerHTML = `<span style="font-family:'DM Serif Display',serif;font-size:20px;letter-spacing:-.5px">Stage ${si.stage}${acrLabel}</span><br><span style="font-size:12px;font-weight:400;opacity:.8">${acrDesc}</span>`;
+  let acrLabel = '';
+  let acrDesc = '';
+  if (acrMgMmol !== null) {
+    if (acrMgMmol < 3)       { acrLabel = ' A1'; acrDesc = 'No significant albuminuria'; }
+    else if (acrMgMmol < 30) { acrLabel = ' A2'; acrDesc = 'Moderately increased albuminuria'; }
+    else                      { acrLabel = ' A3'; acrDesc = 'Severely increased albuminuria'; }
+  }
+  // Combined: eGFR description · ACR description (no duplication of stage number)
+  const parts = [si.desc];
+  if (acrDesc) parts.push(acrDesc);
+  else parts.push('Enter ACR below for full classification');
+  el.innerHTML = parts.join(' &nbsp;·&nbsp; ');
+  // Update the stage label to include ACR category
+  const stageEl = document.getElementById('ckd-stage');
+  if (stageEl) stageEl.textContent = 'CKD Stage ' + si.stage + acrLabel;
 }
  
 function renderAdvice(egfr) {
@@ -1345,7 +1350,7 @@ function showBP() {
     adv='This level warrants attention in CKD. Lifestyle: reduce salt to &lt;6g/day, maintain a healthy weight, exercise ≥150 min/week, limit alcohol. Recheck monthly. Discuss at your next GP appointment.';
   } else if (grade === 2) {
     cls='bpo'; lbl='⚠ Elevated (140–159/90–99)';
-    adv='This BP needs medical attention. Please make a routine GP appointment to discuss BP management — medication is likely to be appropriate.';
+    adv='This BP is above the CKD target of &lt;130/80 mmHg. Please discuss with your GP — medication may be warranted alongside lifestyle measures.';
   } else {
     cls='bpr'; lbl='🔴 Significantly raised (≥ 160 systolic or ≥ 100 diastolic)';
     adv='Please contact your GP or NHS 111 promptly. If you have severe headache, vision changes, chest pain, or breathlessness — call 999 or go to A&amp;E immediately.';
@@ -1485,7 +1490,7 @@ function buildPrintReport() {
     if (hasBP) {
       if (bpS < 130 && bpD < 80) boxes += `<div class="pr-ib gn"><strong>BP ${bpS}/${bpD} mmHg — within NICE target (&lt;130/80).</strong> Continue lifestyle and monitoring.</div>`;
       else if (bpGrade(bpS,bpD)===1) boxes += `<div class="pr-ib yl"><strong>BP ${bpS}/${bpD} mmHg — mildly elevated.</strong> Lifestyle measures; discuss at next GP appointment.</div>`;
-      else if (bpGrade(bpS,bpD)===2) boxes += `<div class="pr-ib or"><strong>BP ${bpS}/${bpD} mmHg — elevated.</strong> GP review needed. ACE inhibitor or ARB preferred in CKD with proteinuria.</div>`;
+      else if (bpGrade(bpS,bpD)===2) boxes += `<div class="pr-ib or"><strong>BP ${bpS}/${bpD} mmHg — elevated.</strong> Above the CKD target of &lt;130/80 mmHg. Discuss with your GP — medication may be warranted. An ACE inhibitor or ARB is preferred in CKD with proteinuria; an SGLT2 inhibitor may also be indicated.</div>`;
       else boxes += `<div class="pr-ib rd"><strong>BP ${bpS}/${bpD} mmHg — significantly raised.</strong> Contact your GP or NHS 111 promptly. If you have severe headache, vision changes, chest pain, or breathlessness — call 999 or go to A&E immediately.</div>`;
     }
  
@@ -1502,7 +1507,8 @@ function buildPrintReport() {
   // Next steps — concise for single-page fit
   const nextSteps = () => {
     const steps = [];
-    if (hasBP && bpGrade(bpS,bpD) >= 2) steps.push({urg:true, title:'Discuss BP management with your GP', detail:`${bpS}/${bpD} mmHg exceeds the CKD target of <130/80 mmHg. ACE inhibitor or ARB preferred in CKD with proteinuria.`});
+    if (hasBP && bpGrade(bpS,bpD) >= 2) steps.push({urg:true, title:'Discuss BP management with your GP', detail:`${bpS}/${bpD} mmHg exceeds the CKD target of <130/80 mmHg. Medication may be warranted — an ACE inhibitor or ARB is preferred in CKD with proteinuria.`});
+    if (hasACR && curACR_mgmmol >= 3) steps.push({urg: curACR_mgmmol >= 30, title:'Ask your GP about ACE inhibitor/ARB and SGLT2 inhibitor', detail: curACR_mgmmol >= 30 ? `ACR ${curACR_mgmmol.toFixed(1)} mg/mmol (A3) — significant proteinuria. NICE NG203 recommends renin-angiotensin system blockade (ACE inhibitor or ARB) and consideration of an SGLT2 inhibitor to reduce progression risk.` : `ACR ${curACR_mgmmol.toFixed(1)} mg/mmol (A2) — microalbuminuria. An ACE inhibitor or ARB and an SGLT2 inhibitor may be indicated to reduce CKD and cardiovascular risk.`});
     if (curEGFR < 30) steps.push({urg:true, title:'Urgent GP review required', detail:`eGFR ${curEGFR} warrants prompt assessment and likely nephrology referral.`});
     else if (curEGFR < 60) steps.push({urg:true, title:`Repeat blood tests within ${curEGFR>=45?'8':'4'} weeks`, detail:'Single readings can be affected by dehydration or illness. Confirmatory result needed before any diagnosis.'});
     else steps.push({urg:false, title:'Repeat blood tests as per GP advice', detail:'Regular monitoring is important to detect trends over time.'});
