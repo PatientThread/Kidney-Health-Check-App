@@ -404,6 +404,7 @@
       <tr><td><span class="spill" style="background:#fdecea;color:#c0392b">G5</span></td><td>&lt; 15</td><td>Kidney failure</td></tr>
     </tbody>
   </table>
+  <div id="full-stage-box" class="hidden" style="margin-bottom:16px"></div>
   <div class="sec-lbl">Guidance</div>
   <div id="advice-boxes"></div>
 </div>
@@ -908,6 +909,7 @@ function calculate(silent) {
   } else { cgSec.classList.add('hidden'); }
  
   renderAdvice(curEGFR);
+  renderFullStage(curEGFR, curACR_mgmmol);
  
   ['c-results','c-trend','c-acr','c-bp','c-report','c-res'].forEach(id =>
     document.getElementById(id).classList.remove('hidden'));
@@ -922,6 +924,28 @@ function calculate(silent) {
     renderList();
     renderChart();
   }
+}
+ 
+function renderFullStage(egfr, acrMgMmol) {
+  const box = document.getElementById('full-stage-box');
+  if (!egfr) { box.classList.add('hidden'); return; }
+  const si = stageOf(egfr);
+  // Colour classes matching CKD stage
+  const bg = {'g1':'var(--green-light)','g2':'var(--green-light)','g3a':'var(--yellow-light)','g3b':'var(--orange-light)','g4':'var(--orange-light)','g5':'var(--red-light)'};
+  const bc = {'g1':'var(--green)','g2':'var(--green)','g3a':'var(--yellow)','g3b':'var(--orange)','g4':'var(--orange)','g5':'var(--red)'};
+  const tc = {'g1':'#1a4a30','g2':'#1a4a30','g3a':'#5a4010','g3b':'#7a2a00','g4':'#7a2a00','g5':'#7a1a10'};
+  let acrLabel = '';
+  if (acrMgMmol !== null) {
+    if (acrMgMmol < 3) acrLabel = ' A1';
+    else if (acrMgMmol < 30) acrLabel = ' A2';
+    else acrLabel = ' A3';
+  }
+  box.innerHTML = `<div style="background:${bg[si.cls]};border:2px solid ${bc[si.cls]};border-radius:10px;padding:14px 20px;color:${tc[si.cls]}">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:4px">Your CKD Classification</div>
+    <div style="font-family:'DM Serif Display',serif;font-size:26px;line-height:1;color:${tc[si.cls]}">Stage ${si.stage}${acrLabel}</div>
+    <div style="font-size:13px;margin-top:4px;opacity:.85">${si.desc}${acrLabel ? (acrMgMmol < 3 ? ' · A1: no significant albuminuria' : acrMgMmol < 30 ? ' · A2: moderately increased albuminuria' : ' · A3: severely increased albuminuria') : ' · Enter ACR below for full classification'}</div>
+  </div>`;
+  box.classList.remove('hidden');
 }
  
 function renderAdvice(egfr) {
@@ -1162,11 +1186,12 @@ function showACR() {
   const dispVal = useACRmgg ? rawVal.toFixed(1) + ' mg/g' : rawVal.toFixed(1) + ' mg/mmol';
   let cat, desc, cls;
   if (mgmmol < 3)  { cat='A1 — Normal to mildly increased'; desc='No significant albuminuria.'; cls='green'; }
-  else if (mgmmol < 30) { cat='A2 — Moderately increased'; desc='Microalbuminuria detected. This is an important marker of kidney and cardiovascular risk, even with a normal eGFR. Discuss with your GP.'; cls='yellow'; }
-  else { cat='A3 — Severely increased'; desc='Significant proteinuria. This substantially increases CKD progression and cardiovascular risk, and warrants GP review and very likely nephrology referral.'; cls='orange'; }
+  else if (mgmmol < 30) { cat='A2 — Moderately increased'; desc='Microalbuminuria detected. An important marker of kidney and cardiovascular risk. Discuss with your GP — an ACE inhibitor or ARB and an SGLT2 inhibitor may be indicated.'; cls='yellow'; }
+  else { cat='A3 — Severely increased'; desc='Significant proteinuria — substantially increases CKD progression and cardiovascular risk. GP review and likely nephrology referral warranted. Treatment with an ACE inhibitor or ARB, and an SGLT2 inhibitor, should be discussed.'; cls='orange'; }
  
   box.innerHTML = `<div class="ib ${cls}"><strong>ACR ${dispVal} — ${cat}</strong><br>${desc}</div>`;
  
+  renderFullStage(curEGFR, mgmmol);
   renderKDIGO(curEGFR, mgmmol);
   renderKFRE(curAge, curSex, curEGFR, mgmmol);
 }
@@ -1472,8 +1497,8 @@ function buildPrintReport() {
     // ACR
     if (hasACR) {
       if (curACR_mgmmol < 3) boxes += `<div class="pr-ib gn"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A1, no significant albuminuria.</strong> Continue routine monitoring.</div>`;
-      else if (curACR_mgmmol < 30) boxes += `<div class="pr-ib yl"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A2 microalbuminuria.</strong> Raises CKD and CV risk. ACE inhibitor/ARB may be indicated — discuss with GP.</div>`;
-      else boxes += `<div class="pr-ib or"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A3 significant proteinuria.</strong> Substantially increases risk. GP review and likely nephrology referral warranted.</div>`;
+      else if (curACR_mgmmol < 30) boxes += `<div class="pr-ib yl"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A2 microalbuminuria.</strong> Raises CKD and CV risk. Treatment with an ACE inhibitor or ARB, and an SGLT2 inhibitor, may be indicated — discuss with GP.</div>`;
+      else boxes += `<div class="pr-ib or"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A3 significant proteinuria.</strong> Substantially increases risk. GP review and likely nephrology referral warranted. Treatment with an ACE inhibitor or ARB and an SGLT2 inhibitor should be discussed.</div>`;
     }
  
     return boxes;
@@ -1590,6 +1615,13 @@ function buildPrintReport() {
     </div>
   </div>
  
+  <div style="background:${(() => { const s=stageOf(curEGFR); return {'g1':'#e8f5ee','g2':'#e8f5ee','g3a':'#fdf6e3','g3b':'#fdf0e8','g4':'#fdf0e8','g5':'#fdecea'}[s.cls]; })()};border:2px solid ${(() => { const s=stageOf(curEGFR); return {'g1':'#2d7a4f','g2':'#2d7a4f','g3a':'#b8860b','g3b':'#cc5500','g4':'#cc5500','g5':'#c0392b'}[s.cls]; })()};border-radius:7px;padding:10px 14px;margin-bottom:9px;display:flex;align-items:center;justify-content:space-between">
+    <div>
+      <div style="font-size:8px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.7;margin-bottom:2px">CKD Classification</div>
+      <div style="font-family:'DM Serif Display',serif;font-size:22px;line-height:1;color:${(() => { const s=stageOf(curEGFR); return {'g1':'#1a4a30','g2':'#1a4a30','g3a':'#5a4010','g3b':'#7a2a00','g4':'#7a2a00','g5':'#7a1a10'}[s.cls]; })()}">Stage ${stageOf(curEGFR).stage}${hasACR?(curACR_mgmmol<3?' A1':curACR_mgmmol<30?' A2':' A3'):''}</div>
+    </div>
+    <div style="text-align:right;font-size:11px;color:#6b6258">${stageOf(curEGFR).desc}${hasACR?(curACR_mgmmol<3?' · No significant albuminuria':curACR_mgmmol<30?' · Moderately increased albuminuria':' · Severely increased albuminuria'):' · ACR not entered'}</div>
+  </div>
   <div class="pr-two">
     <div>
       <div class="pr-sec">eGFR Trend${slopePerYear!==null?' ('+Math.abs(slopePerYear).toFixed(1)+'/yr '+(slopePerYear<0?'decline':'improvement')+')':(hasTrend?'':' — single reading')}</div>
@@ -1695,7 +1727,7 @@ function resetData() {
  
   // Hide all sub-sections
   ['fr-advice','multi-readings','acr-no','acr-yes','kdigo-wrap',
-   'chart-wrap','bp-no','bp-yes','acr-result','cg-section'].forEach(id => {
+   'chart-wrap','bp-no','bp-yes','acr-result','cg-section','full-stage-box'].forEach(id => {
     const el = document.getElementById(id);
     if (el) el.classList.add('hidden');
   });
@@ -1775,3 +1807,4 @@ window.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+ 
