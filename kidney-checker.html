@@ -204,7 +204,7 @@
  
   /* PRINT STYLES — generates a clean clinical report, hiding the app UI entirely */
   @media print {
-    @page { margin: 12mm 14mm; size: A4; }
+    @page { margin: 8mm 10mm; size: A4; }
  
     /* Hide everything by default */
     header, footer, #disc-overlay, #c-inputs, #c-trend, #c-acr, #c-bp, #c-report, #c-res,
@@ -538,67 +538,65 @@
 ════════════════════════════════════════════ -->
 <div id="print-report" style="display:none">
 <style>
-  /* Print report internal styles */
-  .pr { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #1a1612; }
-  .pr-hdr { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1a3d5c; padding-bottom: 10px; margin-bottom: 14px; }
-  .pr-brand { font-family: 'DM Serif Display', serif; font-size: 18px; color: #1a3d5c; }
-  .pr-sub { font-size: 10px; color: #9a9088; letter-spacing: .05em; text-transform: uppercase; margin-top: 2px; }
-  .pr-meta { text-align: right; font-size: 11px; color: #6b6258; line-height: 1.8; }
-  .pr-meta strong { font-size: 14px; color: #1a1612; display: block; }
-  .pr-sec { font-size: 9px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 3px; margin: 12px 0 8px; }
-  .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 6px; margin-bottom: 10px; }
-  .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 6px; padding: 8px; text-align: center; }
+  /* Print report — tightly tuned for one A4 page */
+  .pr { font-family: 'DM Sans', sans-serif; font-size: 10.5px; color: #1a1612; line-height: 1.4; }
+  .pr-hdr { display: flex; align-items: flex-start; justify-content: space-between; border-bottom: 2px solid #1a3d5c; padding-bottom: 7px; margin-bottom: 9px; }
+  .pr-brand { font-family: 'DM Serif Display', serif; font-size: 15px; color: #1a3d5c; }
+  .pr-sub { font-size: 9px; color: #9a9088; letter-spacing: .05em; text-transform: uppercase; margin-top: 1px; }
+  .pr-meta { text-align: right; font-size: 10px; color: #6b6258; line-height: 1.6; }
+  .pr-meta strong { font-size: 12px; color: #1a1612; display: block; }
+  .pr-sec { font-size: 8px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #2c5f8a; border-bottom: 1px solid #e2ddd4; padding-bottom: 2px; margin: 8px 0 5px; }
+  .pr-metrics { display: grid; grid-template-columns: repeat(5,1fr); gap: 5px; margin-bottom: 7px; }
+  .pr-metric { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 6px; text-align: center; }
   .pr-metric.yl { background: #fdf6e3; border-color: #b8860b; }
   .pr-metric.or { background: #fdf0e8; border-color: #cc5500; }
   .pr-metric.rd { background: #fdecea; border-color: #c0392b; }
   .pr-metric.gn { background: #e8f5ee; border-color: #2d7a4f; }
   .pr-metric.bl { background: #d6e8f5; border-color: #2c5f8a; }
-  .pr-mval { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1; color: #1a3d5c; }
+  .pr-mval { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1; color: #1a3d5c; }
   .pr-metric.yl .pr-mval { color: #b8860b; }
   .pr-metric.or .pr-mval { color: #cc5500; }
   .pr-metric.rd .pr-mval { color: #c0392b; }
   .pr-metric.gn .pr-mval { color: #2d7a4f; }
-  .pr-munit { font-size: 8px; color: #9a9088; margin-top: 1px; }
-  .pr-mlbl { font-size: 9px; font-weight: 600; color: #6b6258; margin-top: 4px; }
-  .pr-msub { font-size: 8px; color: #9a9088; }
-  .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .pr-tbl { width: 100%; border-collapse: collapse; font-size: 11px; }
-  .pr-tbl th { background: #f7f5f0; padding: 4px 8px; font-size: 9px; font-weight: 600; color: #6b6258; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
-  .pr-tbl td { padding: 4px 8px; border-top: 1px solid #e2ddd4; }
+  .pr-munit { font-size: 7px; color: #9a9088; margin-top: 1px; }
+  .pr-mlbl { font-size: 8px; font-weight: 600; color: #6b6258; margin-top: 3px; }
+  .pr-msub { font-size: 7px; color: #9a9088; }
+  .pr-two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .pr-tbl { width: 100%; border-collapse: collapse; font-size: 9.5px; }
+  .pr-tbl th { background: #f7f5f0; padding: 3px 6px; font-size: 8px; font-weight: 600; color: #6b6258; text-align: left; text-transform: uppercase; letter-spacing: .04em; }
+  .pr-tbl td { padding: 3px 6px; border-top: 1px solid #e2ddd4; }
   .pr-tbl tr.cur td { background: #d6e8f5; font-weight: 600; }
   .pr-tbl tr.proj td { color: #c8a84b; font-style: italic; }
-  .pr-badge { display: inline-block; padding: 1px 6px; border-radius: 20px; font-size: 9px; font-weight: 700; }
-  .bg1 { background: #e8f5ee; color: #2d7a4f; }
-  .bg2 { background: #e8f5ee; color: #2d7a4f; }
+  .pr-badge { display: inline-block; padding: 1px 5px; border-radius: 20px; font-size: 8px; font-weight: 700; }
+  .bg1,.bg2 { background: #e8f5ee; color: #2d7a4f; }
   .bg3a { background: #fdf6e3; color: #b8860b; }
   .bg3b { background: #fdf0e8; color: #cc5500; }
-  .pr-ib { border-radius: 5px; padding: 7px 10px; font-size: 11px; line-height: 1.55; border-left: 3px solid; margin-bottom: 6px; }
+  .pr-ib { border-radius: 4px; padding: 5px 8px; font-size: 9.5px; line-height: 1.45; border-left: 3px solid; margin-bottom: 4px; }
   .pr-ib.gn { background: #e8f5ee; border-color: #2d7a4f; color: #1a4a30; }
   .pr-ib.yl { background: #fdf6e3; border-color: #b8860b; color: #5a4010; }
   .pr-ib.or { background: #fdf0e8; border-color: #cc5500; color: #7a2a00; }
   .pr-ib.rd { background: #fdecea; border-color: #c0392b; color: #7a1a10; }
   .pr-ib.bl { background: #d6e8f5; border-color: #2c5f8a; color: #1a3a5a; }
   .pr-ib.gd { background: #f5edda; border-color: #c8a84b; color: #5a3a00; }
-  .pr-step { display: flex; gap: 8px; align-items: flex-start; margin-bottom: 5px; padding: 6px 8px; background: #f7f5f0; border-radius: 5px; border: 1px solid #e2ddd4; }
-  .pr-stepn { width: 18px; height: 18px; border-radius: 50%; background: #2c5f8a; color: #fff; font-size: 9px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .pr-step { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 4px; padding: 4px 6px; background: #f7f5f0; border-radius: 4px; border: 1px solid #e2ddd4; }
+  .pr-stepn { width: 15px; height: 15px; border-radius: 50%; background: #2c5f8a; color: #fff; font-size: 8px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
   .pr-stepn.urg { background: #cc5500; }
-  .pr-stept strong { display: block; font-size: 11px; }
-  .pr-stept span { font-size: 10px; color: #6b6258; }
-  .pr-prow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-  .pr-pbox { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 6px; padding: 8px 10px; }
-  .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 20px; line-height: 1; }
-  .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 5px; }
-  .pr-psq { display: block; width: 100%; height: 10px; border-radius: 1px; min-height: 10px; }
-  .pr-foot { margin-top: 12px; padding-top: 8px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 9px; color: #9a9088; line-height: 1.6; }
+  .pr-stept strong { display: block; font-size: 9.5px; }
+  .pr-stept span { font-size: 8.5px; color: #6b6258; }
+  .pr-prow { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+  .pr-pbox { background: #f7f5f0; border: 1px solid #e2ddd4; border-radius: 5px; padding: 6px 8px; }
+  .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 17px; line-height: 1; }
+  .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 4px; }
+  .pr-psq { display: block; width: 100%; height: 8px; border-radius: 1px; }
+  .pr-foot { margin-top: 8px; padding-top: 6px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 8px; color: #9a9088; line-height: 1.5; }
   .pr-disc { max-width: 480px; font-style: italic; }
   .pr-dr { text-align: right; }
-  .pr-dr strong { display: block; font-size: 11px; color: #1a3d5c; }
- 
-  /* KDIGO mini in print */
-  .pr-kdigo { display: grid; grid-template-columns: auto repeat(3,1fr); gap: 2px; font-size: 9px; margin-top: 4px; }
-  .pr-kh { padding: 3px 4px; text-align: center; font-weight: 600; color: #6b6258; font-size: 8px; }
-  .pr-kr { padding: 3px 5px; text-align: right; font-weight: 600; color: #6b6258; white-space: nowrap; font-size: 8px; }
-  .pr-kc { padding: 4px 3px; text-align: center; border-radius: 3px; font-size: 8px; font-weight: 600; }
+  .pr-dr strong { display: block; font-size: 10px; color: #1a3d5c; }
+  /* KDIGO mini */
+  .pr-kdigo { display: grid; grid-template-columns: auto repeat(3,1fr); gap: 2px; font-size: 8px; margin-top: 3px; }
+  .pr-kh { padding: 2px 3px; text-align: center; font-weight: 600; color: #6b6258; font-size: 7px; }
+  .pr-kr { padding: 2px 4px; text-align: right; font-weight: 600; color: #6b6258; white-space: nowrap; font-size: 7px; }
+  .pr-kc { padding: 3px 2px; text-align: center; border-radius: 2px; font-size: 7px; font-weight: 600; }
   .pkc1{background:#2d7a4f;color:#fff} .pkc2{background:#7ec99a;color:#1a4a30}
   .pkc3{background:#f4c430;color:#3a2a00} .pkc4{background:#e07020;color:#fff} .pkc5{background:#c0392b;color:#fff}
   .pkc-active{outline:2px solid #1a1612;outline-offset:1px;}
@@ -1219,16 +1217,15 @@ function renderKDIGO(egfr, acrMgMmol) {
 // ─────────────────────────────────────────────────────
 function calcKFRE(age, sex, egfr, acrMgMmol) {
   const female = sex === 'female' ? 1 : 0;
-  // Tangri 2011 JASN: age coefficient is per 10-year increment (age/10)
-  const lhr = (-0.2201 * (age/10)) + (0.2467 * female) + (-0.5567 * Math.log(egfr)) + (0.4510 * Math.log(acrMgMmol));
-  // Mean linear predictor from derivation cohort (mean age=61.15yr → 6.115 decades,
-  // 44% female, mean eGFR=38.48, mean ACR=31.67 mg/mmol)
-  const lhr_mean = (-0.2201 * 6.115) + (0.2467 * 0.44) + (-0.5567 * Math.log(38.48)) + (0.4510 * Math.log(31.67));
-  const lhr_centred = lhr - lhr_mean;
-  // Baseline survivals at mean covariate values (Tangri 2011)
-  const S0_2 = 0.9832, S0_5 = 0.9365;
-  const r2 = 1 - Math.pow(S0_2, Math.exp(lhr_centred));
-  const r5 = 1 - Math.pow(S0_5, Math.exp(lhr_centred));
+  // Exact 4-variable formula from Tangri lab (kidneyfailurerisk.com R package)
+  // Coefficients per Tangri 2011 JASN; S0 values from Tangri 2016 JAMA validation
+  // Age is per 10-year increment, centred at 7.036 decades (70.36yr reference)
+  const lp = -0.2201 * (age/10 - 7.036)
+            + 0.2467 * (female - 0.5)
+            - 0.5567 * (Math.log(egfr) - Math.log(29.66))
+            + 0.4510 * (Math.log(acrMgMmol) - Math.log(31.67));
+  const r2 = 1 - Math.pow(0.9750, Math.exp(lp));
+  const r5 = 1 - Math.pow(0.9240, Math.exp(lp));
   return {
     r2: Math.min(99.9, Math.max(0.1, Math.round(r2*1000)/10)),
     r5: Math.min(99.9, Math.max(0.1, Math.round(r5*1000)/10))
@@ -1239,6 +1236,16 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
   const wrap = document.getElementById('kfre-wrap');
   if (!age || !sex || !egfr || !acrMgMmol) { wrap.innerHTML=''; return; }
  
+  // KFRE is only validated for eGFR < 60. Do not display above this threshold.
+  if (egfr >= 60) {
+    wrap.innerHTML = `
+      <div class="sec-lbl">Kidney Failure Risk Estimate (KFRE)</div>
+      <div class="ib blue" style="font-size:13px">
+        <strong>KFRE not applicable at this eGFR level.</strong> The Kidney Failure Risk Equation (Tangri et al., 2011) was derived and validated in patients with eGFR &lt;60 mL/min/1.73m². Applying it above this threshold produces unreliable estimates and is not recommended. Your current eGFR of ${egfr} mL/min/1.73m² is above the validated range — the KFRE is not shown.
+      </div>`;
+    return;
+  }
+ 
   const { r2, r5 } = calcKFRE(age, sex, egfr, acrMgMmol);
  
   // Pictogram: 10×10 grid, no scrolling needed
@@ -1247,7 +1254,6 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
     const col = pct < 5 ? '#2d7a4f' : pct < 20 ? '#e07020' : '#c0392b';
     const txtCol = pct < 5 ? 'var(--green)' : pct < 20 ? 'var(--orange)' : 'var(--red)';
     const isHighRisk = pct >= 5;
-    // Build 10×10 grid (100 squares)
     let sqs = '';
     for (let i = 0; i < 100; i++) {
       sqs += `<div class="psq" style="background:${i < n ? col : '#e2ddd4'}" title="${i < n ? 'At risk' : 'Not at risk'}"></div>`;
@@ -1275,7 +1281,7 @@ function renderKFRE(age, sex, egfr, acrMgMmol) {
     <div class="ib gold" style="font-size:13px">
       <strong>Important:</strong> The KFRE is a statistical model based on population data. It tells you what happens <em>on average</em> to people with your profile — not what will happen to you personally. Please discuss this result with your GP or nephrologist alongside your full clinical picture. Do not act on it alone.
     </div>
-    <div class="footnote">† The KFRE is best validated for eGFR &lt;60 ml/min/1.73m². At higher eGFR values the model has less precision and results should be interpreted with particular caution.</div>`;
+    <div class="footnote">† The KFRE is validated for eGFR &lt;60 mL/min/1.73m². Results outside this range are not shown.</div>`;
 }
  
 // ─────────────────────────────────────────────────────
@@ -1437,53 +1443,53 @@ function buildPrintReport() {
     kfrePict5 = buildPict(k.r5, '5-year risk');
   }
  
-  // Interpretation boxes
+  // Interpretation boxes — concise for single-page fit
   const interpBoxes = () => {
     let boxes = '';
     // eGFR
-    if (curEGFR >= 60) boxes += `<div class="pr-ib gn"><strong>eGFR ${curEGFR} — Stage ${si.stage} (${si.desc}).</strong> eGFR is in the mildly reduced or normal range. Monitoring is important to detect any ongoing decline.</div>`;
-    else if (curEGFR >= 45) boxes += `<div class="pr-ib yl"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately reduced. A confirmatory repeat blood test is recommended within 8 weeks.</div>`;
-    else if (curEGFR >= 30) boxes += `<div class="pr-ib or"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately to severely reduced. Repeat within 4 weeks. Nephrology referral should be discussed with your GP.</div>`;
-    else boxes += `<div class="pr-ib rd"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Severely reduced. Urgent GP review required. Nephrology referral very likely needed.</div>`;
+    if (curEGFR >= 60) boxes += `<div class="pr-ib gn"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Mildly reduced or normal. Monitor for ongoing decline.</div>`;
+    else if (curEGFR >= 45) boxes += `<div class="pr-ib yl"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately reduced. Repeat confirmatory test within 8 weeks.</div>`;
+    else if (curEGFR >= 30) boxes += `<div class="pr-ib or"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Moderately–severely reduced. Repeat within 4 weeks. Discuss nephrology referral with GP.</div>`;
+    else boxes += `<div class="pr-ib rd"><strong>eGFR ${curEGFR} — Stage ${si.stage}.</strong> Severely reduced. Urgent GP review. Nephrology referral very likely needed.</div>`;
  
     // Trend
     if (slopePerYear !== null) {
       const absSlope = Math.abs(slopePerYear).toFixed(1);
-      if (slopePerYear < -5) boxes += `<div class="pr-ib rd"><strong>Rapid eGFR decline detected:</strong> approximately ${absSlope} mL/min/1.73m² per year — above the NICE threshold of 5/year for referral consideration. Discuss with your GP urgently.</div>`;
-      else if (slopePerYear < -2) boxes += `<div class="pr-ib or"><strong>Progressive eGFR decline:</strong> approximately ${absSlope} mL/min/1.73m² per year. This warrants close monitoring and review of modifiable risk factors (BP, proteinuria, medications).</div>`;
-      else if (slopePerYear < 0) boxes += `<div class="pr-ib yl"><strong>Mild eGFR decline:</strong> approximately ${absSlope} mL/min/1.73m² per year. Within the expected range for age-related decline, but ongoing monitoring is recommended.</div>`;
-      else boxes += `<div class="pr-ib gn"><strong>Stable or improving eGFR</strong> over the period of observation. Continue monitoring as advised.</div>`;
+      if (slopePerYear < -5) boxes += `<div class="pr-ib rd"><strong>Rapid decline: ~${absSlope} mL/min/yr</strong> — above NICE threshold of 5/yr for referral. Discuss urgently with GP.</div>`;
+      else if (slopePerYear < -2) boxes += `<div class="pr-ib or"><strong>Progressive decline: ~${absSlope} mL/min/yr.</strong> Review modifiable risk factors (BP, proteinuria, medications).</div>`;
+      else if (slopePerYear < 0) boxes += `<div class="pr-ib yl"><strong>Mild decline: ~${absSlope} mL/min/yr.</strong> Within age-related range but warrants monitoring.</div>`;
+      else boxes += `<div class="pr-ib gn"><strong>Stable or improving eGFR.</strong> Continue monitoring as advised.</div>`;
     }
  
     // BP
     if (hasBP) {
-      if (bpS < 130 && bpD < 80) boxes += `<div class="pr-ib gn"><strong>Blood pressure ${bpS}/${bpD} mmHg — within NICE CKD target (&lt;130/80).</strong> Continue lifestyle measures and regular monitoring.</div>`;
-      else if (bpGrade(bpS,bpD)===1) boxes += `<div class="pr-ib yl"><strong>Blood pressure ${bpS}/${bpD} mmHg — mildly elevated.</strong> Lifestyle measures and regular monitoring recommended. Discuss at next GP appointment.</div>`;
-      else if (bpGrade(bpS,bpD)===2) boxes += `<div class="pr-ib or"><strong>Blood pressure ${bpS}/${bpD} mmHg — elevated, above NICE CKD target of &lt;130/80.</strong> GP review and likely medication adjustment needed. ACE inhibitor or ARB is preferred in CKD with proteinuria.</div>`;
-      else boxes += `<div class="pr-ib rd"><strong>Blood pressure ${bpS}/${bpD} mmHg — significantly raised.</strong> Urgent GP contact recommended. Seek same-day assessment.</div>`;
+      if (bpS < 130 && bpD < 80) boxes += `<div class="pr-ib gn"><strong>BP ${bpS}/${bpD} mmHg — within NICE target (&lt;130/80).</strong> Continue lifestyle and monitoring.</div>`;
+      else if (bpGrade(bpS,bpD)===1) boxes += `<div class="pr-ib yl"><strong>BP ${bpS}/${bpD} mmHg — mildly elevated.</strong> Lifestyle measures; discuss at next GP appointment.</div>`;
+      else if (bpGrade(bpS,bpD)===2) boxes += `<div class="pr-ib or"><strong>BP ${bpS}/${bpD} mmHg — elevated.</strong> GP review needed. ACE inhibitor or ARB preferred in CKD with proteinuria.</div>`;
+      else boxes += `<div class="pr-ib rd"><strong>BP ${bpS}/${bpD} mmHg — significantly raised.</strong> Contact GP urgently for same-day assessment.</div>`;
     }
  
     // ACR
     if (hasACR) {
-      if (curACR_mgmmol < 3) boxes += `<div class="pr-ib gn"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — no significant albuminuria (A1).</strong> Continue routine monitoring.</div>`;
-      else if (curACR_mgmmol < 30) boxes += `<div class="pr-ib yl"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — microalbuminuria present (A2).</strong> Increases both CKD progression and cardiovascular risk. Discuss with GP. Renin-angiotensin system blockade (ACE inhibitor or ARB) may be indicated.</div>`;
-      else boxes += `<div class="pr-ib or"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — significant proteinuria (A3).</strong> Substantially increases risk. GP review and likely nephrology referral warranted.</div>`;
+      if (curACR_mgmmol < 3) boxes += `<div class="pr-ib gn"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A1, no significant albuminuria.</strong> Continue routine monitoring.</div>`;
+      else if (curACR_mgmmol < 30) boxes += `<div class="pr-ib yl"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A2 microalbuminuria.</strong> Raises CKD and CV risk. ACE inhibitor/ARB may be indicated — discuss with GP.</div>`;
+      else boxes += `<div class="pr-ib or"><strong>ACR ${curACR_mgmmol.toFixed(1)} mg/mmol — A3 significant proteinuria.</strong> Substantially increases risk. GP review and likely nephrology referral warranted.</div>`;
     }
  
     return boxes;
   };
  
-  // Next steps
+  // Next steps — concise for single-page fit
   const nextSteps = () => {
     const steps = [];
-    if (hasBP && bpGrade(bpS,bpD) >= 2) steps.push({urg:true, title:'Discuss blood pressure management with your GP soon', detail:`${bpS}/${bpD} mmHg is above the CKD target of <130/80 mmHg. An ACE inhibitor or ARB is the preferred agent in CKD with proteinuria — ask your GP specifically about this.`});
+    if (hasBP && bpGrade(bpS,bpD) >= 2) steps.push({urg:true, title:'Discuss BP management with your GP', detail:`${bpS}/${bpD} mmHg exceeds the CKD target of <130/80 mmHg. ACE inhibitor or ARB preferred in CKD with proteinuria.`});
     if (curEGFR < 30) steps.push({urg:true, title:'Urgent GP review required', detail:`eGFR ${curEGFR} warrants prompt assessment and likely nephrology referral.`});
-    else if (curEGFR < 60) steps.push({urg:true, title:`Repeat blood tests within ${curEGFR>=45?'8':'4'} weeks`, detail:'A single eGFR can be affected by dehydration, illness or exercise. A confirmatory result is needed before any diagnosis is confirmed.'});
-    else steps.push({urg:false, title:'Repeat blood tests as recommended by your GP', detail:'Even with a normal eGFR, regular monitoring is important to detect trends over time.'});
-    if (!hasACR) steps.push({urg:false, title:'Request a urine ACR test from your GP', detail:'A first morning urine sample checks for albumin — a key marker of kidney damage not captured by eGFR alone. It is essential for accurate CKD staging.'});
-    if (hasTrend && slopePerYear !== null && slopePerYear < -5) steps.push({urg:true, title:'eGFR decline >5/year — discuss nephrology referral with your GP', detail:'NICE NG203 identifies a decline of more than 5 mL/min/1.73m² per year as a criterion for nephrology referral consideration.'});
-    steps.push({urg:false, title:'Annual monitoring of eGFR, creatinine, ACR and blood pressure', detail:`NICE NG203 recommends monitoring frequency based on CKD stage and albuminuria category. ${si.stage} ${hasACR?(curACR_mgmmol<3?'+ A1':'+ '+(curACR_mgmmol<30?'A2':'A3')):''}  warrants at least annual review.`});
-    steps.push({urg:false, title:'Lifestyle measures to slow CKD progression', detail:'Reduce dietary salt to <6g/day, maintain a healthy weight, exercise ≥150 min/week, avoid NSAIDs (ibuprofen etc.), stay well hydrated, and inform your pharmacist/GP about CKD before starting any new medication.'});
+    else if (curEGFR < 60) steps.push({urg:true, title:`Repeat blood tests within ${curEGFR>=45?'8':'4'} weeks`, detail:'Single readings can be affected by dehydration or illness. Confirmatory result needed before any diagnosis.'});
+    else steps.push({urg:false, title:'Repeat blood tests as per GP advice', detail:'Regular monitoring is important to detect trends over time.'});
+    if (!hasACR) steps.push({urg:false, title:'Request urine ACR from GP', detail:'First-morning urine sample for albumin — essential for accurate CKD staging.'});
+    if (hasTrend && slopePerYear !== null && slopePerYear < -5) steps.push({urg:true, title:'eGFR decline >5/yr — discuss nephrology referral', detail:'NICE NG203 criterion for referral consideration.'});
+    steps.push({urg:false, title:'Annual monitoring: eGFR, creatinine, ACR, BP', detail:`NICE NG203: ${si.stage}${hasACR?(curACR_mgmmol<3?' + A1':curACR_mgmmol<30?' + A2':' + A3'):''} warrants at least annual review.`});
+    steps.push({urg:false, title:'Lifestyle: salt <6g/day, healthy weight, exercise ≥150 min/week', detail:'Avoid NSAIDs, stay hydrated, inform pharmacist/GP of CKD before new medications.'});
     return steps.map((s,i) => `<div class="pr-step"><div class="pr-stepn${s.urg?' urg':''}">${i+1}</div><div class="pr-stept"><strong>${s.title}</strong><span>${s.detail}</span></div></div>`).join('');
   };
  
@@ -1594,12 +1600,14 @@ function buildPrintReport() {
       ${kdigoTable()}
       <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">${hasACR?'Your position is outlined. G = eGFR stage, A = albuminuria category.':'Enter ACR to see KDIGO risk category.'}</div>
  
-      ${hasACR&&curEGFR?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
+      ${hasACR&&curEGFR&&curEGFR<60?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
       <div class="pr-prow">
         ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r2,'2-year risk')}
         ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r5,'5-year risk')}
       </div>
-      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">KFRE (Tangri et al., JASN 2011). Best validated for eGFR &lt;60 ml/min. Each square = 1 person in 100.</div>`:''}
+      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">KFRE (Tangri et al., JASN 2011). Validated for eGFR &lt;60 ml/min. Each square = 1 person in 100.</div>`:
+      hasACR&&curEGFR>=60?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
+      <div class="pr-ib bl" style="font-size:9px">KFRE not shown: only validated for eGFR &lt;60 mL/min/1.73m². Current eGFR ${curEGFR} is above this threshold.</div>`:''}
     </div>
  
     <div>
