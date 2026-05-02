@@ -273,6 +273,7 @@
     <p>Calculations are based on published clinical guidelines (NICE NG203, CKD-EPI 2021, KFRE). However, <strong>individual circumstances vary greatly</strong> — guidelines should never be applied rigidly.</p>
     <p><strong>If you feel unwell, have concerning symptoms, or are unsure about any result — contact your GP or NHS 111 promptly.</strong> In an emergency, call 999.</p>
     <p>Developed by Dr Christopher Lawrence, Consultant Nephrologist. Not a substitute for a consultation with your own doctor.</p>
+    <p><strong>This tool is intended for adults aged 18 and over.</strong> The equations used are not validated for children or adolescents.</p>
     <div class="disc-actions">
       <button class="btn-p" onclick="document.getElementById('disc-overlay').style.display='none'">I understand — continue</button>
       <a href="https://www.hertskidneycare.co.uk" class="btn-s" target="_blank">hertskidneycare.co.uk</a>
@@ -314,7 +315,7 @@
 <div class="card" id="c-inputs">
   <div class="card-hdr">
     <div class="c-icon">👤</div>
-    <div><div class="c-title">Your Details</div><div class="c-sub">Enter your measurements to calculate your eGFR using CKD-EPI 2021 (race-free)</div></div>
+    <div><div class="c-title">Your Details</div><div class="c-sub">Enter your measurements to calculate your eGFR using CKD-EPI 2021 (race-free) · For adults aged 18 and over only</div></div>
   </div>
   <div class="fgrp" style="margin-bottom:16px">
     <label for="patientName">Name <span style="font-weight:400;color:var(--text-light)">(optional — appears on printed report only)</span></label>
@@ -322,7 +323,7 @@
   </div>
   <div class="fg">
     <div class="fgrp">
-      <label for="age">Age (years)</label>
+      <label for="age">Age (years) <span style="font-weight:400;color:var(--text-light)">(18 or over)</span></label>
       <input type="number" id="age" min="18" max="110" placeholder="e.g. 62">
     </div>
     <div class="fgrp">
@@ -902,6 +903,10 @@ function calculate(silent) {
 
   if (!silent && (!age || !ht || !wt || !creatRaw)) { alert('Please fill in all fields.'); return; }
   if (!age || !ht || !wt || !creatRaw) return;
+  if (age < 18) {
+    if (!silent) alert('This tool is designed for adults aged 18 and over. The CKD-EPI equation is not validated for use in children or adolescents — please speak to your GP or paediatrician.');
+    return;
+  }
 
   const scrMgDL = useMgDL ? creatRaw : creatRaw / 88.42;
   curAge = age; curSex = sex;
