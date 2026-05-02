@@ -209,6 +209,13 @@
     @page { margin: 8mm 10mm; size: A4; }
     @page :first { margin-top: 10mm; }
 
+    /* Force backgrounds to print — essential for coloured boxes and pictogram squares */
+    * {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
     /* Hide everything by default */
     header, footer, #disc-overlay, #c-inputs, #c-trend, #c-acr, #c-bp, #c-report, #c-res,
     #c-results, .calc-btn, .add-btn, .r-del, .print-btn, .reset-btn, .hdr-links,
@@ -1478,7 +1485,7 @@ function buildPrintReport() {
       const col = pct<5?'#2d7a4f':pct<20?'#e07020':'#c0392b';
       const txtCol = pct<5?'#2d7a4f':pct<20?'#cc5500':'#c0392b';
       let sq='';
-      for(let i=0;i<100;i++) sq+=`<div class="pr-psq" style="background:${i<n?col:'#e2ddd4'}"></div>`;
+      for(let i=0;i<100;i++) sq+=`<div class="pr-psq" style="background:${i<n?col:'#e2ddd4'};font-size:0">&nbsp;</div>`;
       return `<div class="pr-pbox">
         <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${label}</div>
         <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
@@ -1737,7 +1744,7 @@ function buildKfrePict(pct, label) {
   const col = pct<5?'#2d7a4f':pct<20?'#e07020':'#c0392b';
   const txtCol = pct<5?'#2d7a4f':pct<20?'#cc5500':'#c0392b';
   let sq='';
-  for(let i=0;i<100;i++) sq+=`<div class="pr-psq" style="background:${i<n?col:'#e2ddd4'}"></div>`;
+  for(let i=0;i<100;i++) sq+=`<div class="pr-psq" style="background:${i<n?col:'#e2ddd4'};font-size:0">&nbsp;</div>`;
   return `<div class="pr-pbox">
     <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${label}</div>
     <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
