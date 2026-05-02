@@ -26,7 +26,7 @@
 
   /* DISCLAIMER */
   #disc-overlay{position:fixed;inset:0;z-index:9999;background:rgba(10,15,30,.85);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;padding:20px}
-  .disc-box{background:var(--surface);border-radius:var(--radius-lg);max-width:560px;width:100%;padding:40px;box-shadow:var(--shadow-lg);animation:su .4s ease}
+  .disc-box{background:var(--surface);border-radius:var(--radius-lg);max-width:560px;width:100%;padding:40px;box-shadow:var(--shadow-lg);animation:su .4s ease;border-top:4px solid var(--rose)}
   .disc-box .logo{display:flex;align-items:center;gap:10px;margin-bottom:24px}
   .disc-box .logo svg{width:28px;height:28px}
   .disc-box .logo span{font-size:13px;font-weight:500;color:#3a3028;letter-spacing:.05em;text-transform:uppercase}
@@ -55,7 +55,7 @@
   /* CARDS */
   .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:32px;margin-bottom:24px;box-shadow:var(--shadow);animation:su .4s ease both}
   .card-hdr{display:flex;align-items:center;gap:12px;margin-bottom:24px}
-  .c-icon{width:40px;height:40px;border-radius:10px;background:var(--rose-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+  .c-icon{width:40px;height:40px;border-radius:10px;background:var(--accent-light);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
   .c-title{font-family:'DM Serif Display',serif;font-size:20px;color:var(--rose-dark)}
   .c-sub{font-size:13px;color:var(--text-muted);margin-top:2px}
 
@@ -549,6 +549,8 @@
     <a class="lc" href="amazon-store.html" target="_blank" id="amazon-store"><div class="lc-ico">🛒</div><div class="lc-txt"><strong>Dr Lawrence's Amazon Store</strong><span>BP monitors, scales, urine test strips, bottles &amp; more</span></div></a>
     <a class="lc" href="https://www.nice.org.uk/guidance/ng203" target="_blank"><div class="lc-ico">📋</div><div class="lc-txt"><strong>NICE CKD Guidelines NG203</strong><span>Full published clinical guidance</span></div></a>
     <a class="lc" href="https://kidneyfailurerisk.com" target="_blank"><div class="lc-ico">🔬</div><div class="lc-txt"><strong>KFRE Calculator</strong><span>Official Tangri Lab kidney failure risk tool</span></div></a>
+    <a class="lc" href="https://www.kidneypatientassociation.co.uk" target="_blank"><div class="lc-ico">🫀</div><div class="lc-txt"><strong>Kidney Patients Association</strong><span>UK charity supporting kidney patients</span></div></a>
+    <a class="lc" href="https://www.ukka.co.uk" target="_blank"><div class="lc-ico">🩺</div><div class="lc-txt"><strong>UK Kidney Association (UKKA)</strong><span>Professional body for kidney medicine in the UK</span></div></a>
   </div>
 </div>
 
@@ -611,10 +613,10 @@
   .pr-ppct { font-family: 'DM Serif Display', serif; font-size: 16px; line-height: 1; }
   .pr-pgrid { display: grid; grid-template-columns: repeat(10,1fr); gap: 1px; margin-top: 3px; }
   .pr-psq { display: block; width: 100%; height: 7px; border-radius: 1px; }
-  .pr-foot { margin-top: 4px; padding-top: 3px; border-top: 1px solid #e2ddd4; display: flex; justify-content: space-between; align-items: flex-end; font-size: 8px; color: #4a4540; line-height: 1.4; }
+  .pr-foot { margin-top: 6px; padding-top: 5px; border-top: 2px solid #a56968; display: flex; justify-content: space-between; align-items: flex-end; font-size: 8px; color: #4a4540; line-height: 1.4; }
   .pr-disc { max-width: 480px; font-style: italic; }
-  .pr-dr { text-align: right; }
-  .pr-dr strong { display: block; font-size: 10px; color: #a56968; }
+  .pr-dr { text-align: right; padding-left: 12px; }
+  .pr-dr strong { display: block; font-size: 10px; color: #1a1612; }
   /* KDIGO mini */
   .pr-kdigo { display: grid; grid-template-columns: auto repeat(3,1fr); gap: 2px; font-size: 8px; margin-top: 3px; }
   .pr-kh { padding: 2px 3px; text-align: center; font-weight: 600; color: #4a4540; font-size: 7px; }
@@ -1480,9 +1482,9 @@ function buildPrintReport() {
       return `<div class="pr-pbox">
         <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${label}</div>
         <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
-        <div style="font-size:9px;color:#9a9088;margin-bottom:4px">kidney failure risk</div>
+        <div style="font-size:9px;color:#5a5248;margin-bottom:4px">kidney failure risk</div>
         <div class="pr-pgrid">${sq}</div>
-        <div style="font-size:8px;color:#9a9088;margin-top:3px">Each square = 1 in 100</div>
+        <div style="font-size:8px;color:#5a5248;margin-top:3px">Each square = 1 in 100</div>
       </div>`;
     };
     kfrePict2 = buildPict(k.r2, '2-year risk');
@@ -1535,14 +1537,39 @@ function buildPrintReport() {
     else steps.push({urg:false, title:'Repeat blood tests as per GP advice', detail:'Regular monitoring is important to detect trends over time.'});
     if (!hasACR) steps.push({urg:false, title:'Request urine ACR from GP', detail:'First-morning urine sample for albumin — essential for accurate CKD staging.'});
     if (hasTrend && slopePerYear !== null && slopePerYear < -5) steps.push({urg:true, title:'eGFR decline >5/yr — discuss nephrology referral', detail:'NICE NG203 criterion for referral consideration.'});
-    steps.push({urg:false, title:'Annual monitoring: eGFR, creatinine, ACR, BP', detail:`NICE NG203: ${si.stage}${hasACR?(curACR_mgmmol<3?' + A1':curACR_mgmmol<30?' + A2':' + A3'):''} warrants at least annual review.`});
+    // Smart monitoring frequency per NICE NG203 / Dr Lawrence rules
+    const aIdx = hasACR ? (curACR_mgmmol < 3 ? 0 : curACR_mgmmol < 30 ? 1 : 2) : null;
+    const stageLbl = si.stage + (hasACR ? (aIdx===0?' + A1':aIdx===1?' + A2':' + A3') : '');
+    let monFreq, monDetail;
+    const isG1orG2 = curEGFR >= 60;
+    const isG3a = curEGFR >= 45 && curEGFR < 60;
+    const isG3b = curEGFR >= 30 && curEGFR < 45;
+    const isG4plus = curEGFR < 30;
+    if (isG1orG2 && (aIdx === null || aIdx === 0)) {
+      // No CKD confirmed (normal eGFR, no significant albuminuria) — no specific monitoring needed
+      monFreq = 'No CKD-specific monitoring required';
+      monDetail = `Your results do not indicate CKD at this time. Continue with routine NHS health checks as you get older — blood tests are typically offered as part of standard health screening. If you develop symptoms or risk factors change, speak to your GP.`;
+    } else if ((isG1orG2 && aIdx >= 1) || (isG3a && aIdx === 0)) {
+      // G1/G2 A2-A3, or G3a A1 — yearly
+      monFreq = 'Yearly monitoring: eGFR, creatinine, ACR, BP';
+      monDetail = `NICE NG203: ${stageLbl} — annual monitoring recommended.`;
+    } else if ((isG3a && aIdx >= 1) || isG3b) {
+      // G3a A2/A3, or G3b any — twice yearly
+      monFreq = 'Twice-yearly monitoring: eGFR, creatinine, ACR, BP';
+      monDetail = `NICE NG203: ${stageLbl} — blood tests every 6 months recommended. More frequent checks may be needed if your results are changing.`;
+    } else {
+      // G4+ any — 3× per year or specialist-directed
+      monFreq = 'Monitoring 3 or more times per year, or as directed by your specialist';
+      monDetail = `NICE NG203: ${stageLbl} — frequent monitoring is essential at this stage. Your nephrologist or GP will advise on exact timing. You may need additional tests beyond routine blood tests.`;
+    }
+    steps.push({urg: isG4plus, title: monFreq, detail: monDetail});
     steps.push({urg:false, title:'Lifestyle: salt <6g/day, healthy weight, exercise ≥150 min/week', detail:'Avoid NSAIDs, stay hydrated, inform pharmacist/GP of CKD before new medications.'});
     return steps.map((s,i) => `<div class="pr-step"><div class="pr-stepn${s.urg?' urg':''}">${i+1}</div><div class="pr-stept"><strong>${s.title}</strong><span>${s.detail}</span></div></div>`).join('');
   };
 
   // KDIGO table
   const kdigoTable = () => {
-    if (!hasACR) return '<div style="font-size:11px;color:#9a9088;font-style:italic">ACR not entered — KDIGO risk category unavailable.</div>';
+    if (!hasACR) return '<div style="font-size:11px;color:#5a5248;font-style:italic">ACR not entered — KDIGO risk category unavailable.</div>';
     const eIdx = si.idx;
     const aIdx = acrCatOf(curACR_mgmmol);
     const KM2 = [[1,2,3],[1,2,3],[2,3,4],[3,4,4],[4,4,5],[5,5,5]];
@@ -1611,7 +1638,7 @@ function buildPrintReport() {
       <div style="display:flex;align-items:center;gap:8px">
         <svg width="24" height="24" viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28 8C16 12 10 26 14 38c3 9 10 14 16 12 3-1 5-5 4-9-1-5-5-9-5-15 0-5 2-9 5-9 4 0 6 4 5 9-1 4-1 8 2 12 3 5 8 5 10 0 2-5 0-14-7-20C40 12 34 6 28 8z" fill="#b5605a"/><path d="M72 8C84 12 90 26 86 38c-3 9-10 14-16 12-3-1-5-5-4-9 1-5 5-9 5-15 0-5-2-9-5-9-4 0-6 4-5 9 1 4 1 8-2 12-3 5-8 5-10 0-2-5 0-14 7-20C60 12 66 6 72 8z" fill="#b5605a"/><rect x="46" y="18" width="8" height="22" rx="2" fill="#4e8b8b"/><rect x="40" y="24" width="20" height="8" rx="2" fill="#4e8b8b"/></svg>
         <span style="font-family:'DM Serif Display',serif;font-size:13px"><span style="color:#a56968">Herts</span> <span style="color:#6c999d">Kidney</span><span style="color:#a56968">Care</span></span>
-        <span style="color:#9a9088">&nbsp;·&nbsp; Kidney Health Report${name?' — '+name:''}</span>
+        <span style="color:#5a5248">&nbsp;·&nbsp; Kidney Health Report${name?' — '+name:''}</span>
       </div>
       <span>${name?name+' &nbsp;·&nbsp; ':''} Generated: ${fmtD(new Date().toISOString().split('T')[0])}</span>
     </div>
@@ -1661,19 +1688,19 @@ function buildPrintReport() {
   <div class="pr-two">
     <div>
       <div class="pr-sec">eGFR Trend${slopePerYear!==null?' ('+Math.abs(slopePerYear).toFixed(1)+'/yr '+(slopePerYear<0?'decline':'improvement')+')':(hasTrend?'':' — single reading')}</div>
-      ${hasTrend?`<table class="pr-tbl"><thead><tr><th>Date</th><th>Creatinine</th><th>eGFR</th><th>Stage</th></tr></thead><tbody>${trendRows}</tbody></table><div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">★ Current result · italic = linear projection</div>`
+      ${hasTrend?`<table class="pr-tbl"><thead><tr><th>Date</th><th>Creatinine</th><th>eGFR</th><th>Stage</th></tr></thead><tbody>${trendRows}</tbody></table><div style="font-size:8px;color:#5a5248;margin-top:3px;font-style:italic">★ Current result · italic = linear projection</div>`
       :`<div class="pr-ib bl">Single reading only — no previous results entered to show a trend.</div>`}
 
       <div class="pr-sec" style="margin-top:10px">KDIGO Risk Category</div>
       ${kdigoTable()}
-      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">${hasACR?'Your position is outlined. G = eGFR stage, A = albuminuria category.':'Enter ACR to see KDIGO risk category.'}</div>
+      <div style="font-size:8px;color:#5a5248;margin-top:3px;font-style:italic">${hasACR?'Your position is outlined. G = eGFR stage, A = albuminuria category.':'Enter ACR to see KDIGO risk category.'}</div>
 
       ${hasACR&&curEGFR&&curEGFR<60?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
       <div class="pr-prow">
         ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r2,'2-year risk')}
         ${buildKfrePict(calcKFRE(parseFloat(age),sex,curEGFR,curACR_mgmmol).r5,'5-year risk')}
       </div>
-      <div style="font-size:8px;color:#9a9088;margin-top:3px;font-style:italic">KFRE (Tangri et al., JASN 2011). Validated for eGFR &lt;60 ml/min. Each square = 1 person in 100.</div>`:
+      <div style="font-size:8px;color:#5a5248;margin-top:3px;font-style:italic">KFRE (Tangri et al., JASN 2011). Validated for eGFR &lt;60 ml/min. Each square = 1 person in 100.</div>`:
       hasACR&&curEGFR>=60?`<div class="pr-sec" style="margin-top:10px">Kidney Failure Risk (KFRE)</div>
       <div class="pr-ib bl" style="font-size:9px">KFRE not shown: only validated for eGFR &lt;60 mL/min/1.73m². Current eGFR ${curEGFR} is above this threshold.</div>`:''}
     </div>
@@ -1688,7 +1715,7 @@ function buildPrintReport() {
 
   <div class="pr-foot">
     <div class="pr-disc">This report is generated by the Herts KidneyCare Kidney Health Checker for educational purposes only. It is not a clinical diagnosis and does not replace a consultation with your own doctor. CKD-EPI 2021 (race-free) · KFRE 4-variable (Tangri et al.) · KDIGO 2024 · NICE NG203. If you feel unwell: contact your GP or NHS 111. Emergency: 999.</div>
-    <div class="pr-dr"><strong>Dr Christopher Lawrence</strong>Consultant Nephrologist<br><span style="color:#4e8b8b">hertskidneycare.co.uk</span><br><span style="font-size:8px;color:#9a9088">A PatientThread Ltd service</span></div>
+    <div class="pr-dr"><strong style="color:#1a1612">Dr Christopher Lawrence</strong><br>Consultant Nephrologist<br><span style="color:#6c999d">hertskidneycare.co.uk</span><br><span style="font-size:8px;color:#5a5248">A PatientThread Ltd service</span></div>
   </div>`;
 
   document.getElementById('pr-content').innerHTML = html;
@@ -1703,9 +1730,9 @@ function buildKfrePict(pct, label) {
   return `<div class="pr-pbox">
     <div style="font-size:10px;color:#6b6258;margin-bottom:2px">${label}</div>
     <div class="pr-ppct" style="color:${txtCol}">${pct}%</div>
-    <div style="font-size:9px;color:#9a9088;margin-bottom:4px">kidney failure risk</div>
+    <div style="font-size:9px;color:#5a5248;margin-bottom:4px">kidney failure risk</div>
     <div class="pr-pgrid">${sq}</div>
-    <div style="font-size:8px;color:#9a9088;margin-top:3px">Each square = 1 in 100</div>
+    <div style="font-size:8px;color:#5a5248;margin-top:3px">Each square = 1 in 100</div>
   </div>`;
 }
 
